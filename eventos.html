@@ -22,12 +22,64 @@
         </ul>
     </nav>
     <main>
+        <button id="boton">Haz clic aquí</button>
+
+        <div id="miCaja" style="width: 100px; height: 100px; border: 1px solid black;">
+            Pasa el ratón
+        </div>
+        
+        <div id="scroll" style="width: 300px; height: 100px; overflow-y: scroll; border: 1px solid black;">
+            <p>Esto es un texto de prueba,</p>
+            <p>vamos a trabajar con un texto largo para comprobar como funciona la accion del scroll
+                vamos a trabajar con un texto largo para comprobar como funciona la accion del scroll
+                vamos a trabajar con un texto largo para comprobar como funciona la accion del scroll
+                vamos a trabajar con un texto largo para comprobar como funciona la accion del scroll
+                vamos a trabajar con un texto largo para comprobar como funciona la accion del scroll
+                <var></var>
+            </p>
+        </div>
+
+        <button id="botonRemovible">Haz clic</button>
+
+    
 
     </main>
     <footer>
         <button class="but"><a href="index.html">Volver al índice</a></button>
     </footer>
     <script>
+      // Evento de ratón
+          document.getElementById('boton').addEventListener('click', () => {
+            alert('Botón clicado');
+        });
+
+        // Evento de teclado
+           const caja = document.getElementById('miCaja');
+
+            caja.addEventListener('mouseover', () => {
+                caja.style.backgroundColor = 'red';
+            });
+
+            caja.addEventListener('mouseout', () => {
+                caja.style.backgroundColor = 'green';
+            });
+            ;
+
+        // Evento de scroll
+        document.getElementById('scroll').addEventListener('scroll', () => {
+            console.log('Scroll detectado');
+        });
+
+      //Eliminar un evento con removeEventListener
+      const boton = document.getElementById('botonRemovible');
+
+        function manejarClick() {
+            alert('Evento activado. Se eliminará después de esto.');
+            boton.removeEventListener('click', manejarClick);
+        }
+
+        // Agrega el evento
+        boton.addEventListener('click', manejarClick);
 
     </script>
 </body>
