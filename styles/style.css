@@ -130,6 +130,9 @@ pre {
     background-color: #49792c;
     border: 3px solid #ffffe3;
     border-radius: 20px;
+    color: #ffffe3;
+    font-size: 1rem;
+    font-weight: bold;
 
 }
 
@@ -215,4 +218,9 @@ pre {
     text-align: center;
     border: 3px solid #2c5d0f;
     border-radius: 20px;
+}
+
+.divLista {
+    text-align: center;
+    justify-content: center;
 }
