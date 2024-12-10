@@ -37,36 +37,87 @@
                 <strong>createTextNode</strong>
                 Crea un nodo de texto en el DOM. (Un nodo de texto puede contener únicamente una cadena y no puede tener hijos).
             </p>
+            <pre><code>
+const listas = document.querySelectorAll("ul");
+
+function creaText() {
+    let para = document.createElement("p");
+    let node = document.createTextNode("Esto es nuevo.");
+    para.appendChild(node); 
+    const idCreaText = document.getElementById("idCreaText");
+    idCreaText.appendChild(para); 
+    }
+            </code></pre>
             <div id="idCreaText" class="divResultados"></div>      
             <button class="but" onclick="creaText()">createElement y createTextNode</button>
        </div>  
-       <div id="idDivLista" class="divEjemplos">
+       <div class="divEjemplos">
         <h4>appendChild</h4>
-            <p>Inserta un nodo al final de los nodos hijos de un nodo padre.</p>
-            <ul>
+            <p><strong>Inserta un nodo al final de los nodos hijos de un nodo padre.</strong></p>
+            <pre><code>
+function crea() {
+const creaUl = document.createElement("ul");
+const creaLi = document.createElement("li");
+creaLi.textContent = "Nuevo elemento de lista";
+        
+const idCreaText = document.getElementById("idDivLista");
+        
+creaUl.appendChild(creaLi); 
+idDivLista.appendChild(creaUl); 
+    }
+            </code></pre>
+            <div id="idDivLista" class="divResultados">
+                <ul>
                 <li>1</li>
                 <li>2</li>
             </ul>
-            
+            </div>
         </div>
         <div class="divEjemplos">
             <button class="but" onclick="crea()">appendChild</button>
             <h4>insertBefore</h4>
-            <p>Inserta un nodo antes de otro nodo hijo existente.</p>
+            <p><strong>Inserta un nodo antes de otro nodo hijo existente.</strong></p>
+            <pre><code>
+function insert() {
+    const segundaLista = listas[2];
+    const creaLi = document.createElement("li");
+    creaLi.textContent = "Nuevo elemento de lista";
+            
+    segundaLista.insertBefore(creaLi, segundaLista.firstChild); 
+    }
+            </code></pre>
+            <div class="divResultados">
             <ul>
                 <li>1</li>
                 <li>2</li>
             </ul>
+        </div>
             <button class="but" onclick="insert()">insertBefore</button>
             <h4>removeChild</h4>
-            <p>Elimina un nodo hijo de su nodo padre.</p>
+            <p><strong>Elimina un nodo hijo de su nodo padre.</strong></p>
+            <pre><code>
+function borra() {
+    const terceraLista = listas[3];
+    const borrarLi = terceraLista.lastChild;
+        
+    terceraLista.removeChild(borrarLi);   
+    }
+            </code></pre>
             <ul>
                 <li>1</li>
                 <li>2</li>
             </ul>
             <button class="but" onclick="borra()">removeChild</button>
             <h4>cloneNode</h4>
-            <p>Clona un nodo existente.</p>
+            <p><strong>Clona un nodo existente.</strong></p>
+            <pre><code>
+function clona() {
+    const cuartaLista = listas[4];
+    const copia = cuartaLista.cloneNode(true);
+            
+    cuartaLista.appendChild(copia); 
+    }
+            </code></pre>
             <ul>
                 <li>1</li>
                 <li>2</li>
@@ -76,35 +127,84 @@
         </div>
         <h2>Acceso y navegación</h2>
         <div class="divEjemplos">
-            <div class="divResultados"><ul>
+            <div class="divResultados">
+                <ul>
                 <li>Elemento de lista 1</li>
                 <li>Elemento de lista 2</li>
                 <li>Elemento de lista 3</li>
             </ul>
+            <pre><code>
+            &lt;ul&gt;
+                &lt;li&gt;Elemento de lista 1&lt;/li&gt;
+                &lt;li&gt;Elemento de lista 2&lt;/li&gt;
+                &lt;li&gt;Elemento de lista 3&lt;/li&gt;
+            &lt;/ul&gt;
+        </code></pre>
         </div>
             <h3>Hacia arriba</h3>
             <h4>parentNode</h4>
-            <p>Devuelve el nodo padre.</p>
+            <p><strong>Devuelve el nodo padre.</strong></p>
+            <pre><code>
+function parent() {
+    const parentLi = quintaLista.querySelector("li");
+    console.log(parentLi.parentNode); 
+    }
+            </code></pre>
+
             <button class="but" onclick="parent()">parentNode</button>
             <h3>Entre hermanos</h3>
             <h4>previousSibling / nextSibling</h4>
-            <p>Devuelve los nodos hermanos (incluye texto).</p>
+            <p><strong>Devuelve los nodos hermanos (incluye texto).</strong></p>
+            <pre><code>
+function buscaNextSibling() {
+    const buscaLi = quintaLista.querySelector("li");
+    console.log(quintaLista.nextSibling); 
+    }
+            </code></pre>
+
             <button class="but" onclick="buscaNextSibling()">nextSibling</button>
             <h4>previousElementSibling / nextElementSibling</h4>
-            <p>Devuelve los nodos elementos hermanos.</p>
+            <p><strong>Devuelve los nodos elementos hermanos.</strong></p>
+            
+            <pre><code>
+function buscaNextElementSibling() {
+    const buscaLi = quintaLista.querySelector("li");
+    console.log(buscaLi.nextElementSibling); 
+    }
+            </code></pre>
             <button class="but" onclick="buscaNextElementSibling()">nextElementSibling</button>
             <h3>Hacia abajo</h3>
             <h4>childNodes</h4>
-            <p>Devuelve una lista de nodos hijos (incluye nodos de texto).</p>
+            <p><strong>Devuelve una lista de nodos hijos (incluye nodos de texto).</strong></p>
+            <pre><code>
+function buscaChildNodes() {
+    console.log(quintaLista.childNodes);   
+    }
+                            </code></pre>
             <button class="but" onclick="buscaChildNodes()">childNodes</button>
             <h4>children</h4>
-            <p>Devuelve solo los nodos elementos.</p>
+            <p><strong>Devuelve solo los nodos elementos.</strong></p>
+            <pre><code>
+function buscaChildren() {
+    console.log(quintaLista.children);
+    }
+            </code></pre>
             <button class="but" onclick="buscaChildren()">children</button>
             <h4>firstChild / lastChild</h4>
-            <p>Devuelve el primer o último hijo (incluye nodos de texto).</p>
+            <p><strong>Devuelve el primer o último hijo (incluye nodos de texto).</strong></p>
+            <pre><code>
+function buscaFirstChild() {
+    console.log(quintaLista.firstChild);
+    }    
+            </code></pre>
             <button class="but" onclick="buscaFirstChild()">firstChild</button>
             <h4>firstElementChild / lastElementChild</h4>
-            <p>Devuelve el primer o último nodo hijo elemento.</p>
+            <p><strong>Devuelve el primer o último nodo hijo elemento.</strong></p>
+            <pre><code>
+function buscaFirstElementChild() {
+    console.log(quintaLista.firstElementChild);
+    }
+            </code></pre>
             <button class="but" onclick="buscaFirstElementChild()">firstElementChild</button>
             
         </div>
@@ -133,7 +233,7 @@
             const idCreaText = document.getElementById("idDivLista");
 
             creaUl.appendChild(creaLi); //Inserta un <li> en un <ul>
-            idDivLista.appendChild(creaUl); // Inserta el <ul> en el main del HTML
+            idDivLista.appendChild(creaUl); // Inserta el <ul> en el div indicado
     }
 
     function insert() {
@@ -159,7 +259,7 @@
         const cuartaLista = listas[4];
         const copia = cuartaLista.cloneNode(true);
 
-        cuartaLista.appendChild(copia); //añade una copia del <ul> y sus <li> en el body
+        cuartaLista.appendChild(copia); //añade una copia del <ul> y sus <li> 
         }
     
     const quintaLista = listas[5];
@@ -170,33 +270,31 @@
     }
 
     function buscaNextSibling() {
-        const buscaLi = quintaLista.querySelector("li");;
-        console.log(buscaLi.nextSibling); // Muestra el siguiente hermano
+        const buscaLi = quintaLista.querySelector("li");
+
+        console.log(quintaLista.nextSibling); // Muestra el siguiente hermano
     }
     
     function buscaNextElementSibling() {
         const buscaLi = quintaLista.querySelector("li");
-        console.log(buscaLi.nextElementSibling); //  Muestra el elemento hermano anterior
+        console.log(buscaLi.nextElementSibling); //  Muestra el siguiente elemento hermano 
     }
 
     function buscaChildNodes() {
-        const buscaUl = quintaLista.querySelector("ul");
-        console.log(buscaUl.childNodes);   
+        console.log(quintaLista.childNodes);   
     }
 
     function buscaChildren() {
-        const buscaUl = quintaLista.querySelector("ul");  
-        console.log(buscaUl.children);
+        console.log(quintaLista.children);
     }
 
     function buscaFirstChild() {
-        const buscaUl = quintaLista.querySelector("ul");
-        console.log(buscaUl.firstChild);
+        console.log(quintaLista.firstChild);
     }
 
     function buscaFirstElementChild() {
-        const buscaUl = quintaLista.querySelector("ul");
-        console.log(buscaUl.firstElementChild);
+
+        console.log(quintaLista.firstElementChild);
     }
 
 
