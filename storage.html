@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="styles/style.css">
    </head>
    <style>
-
+    *{
+        list-style: unset;
+    }
+    ul{
+        padding: 0.5rem 0;
+    }
+    input{
+        width: 4rem;
+    }
    </style>
 <body>
     <nav class="navPaginas">
@@ -21,13 +29,159 @@
         </ul>
     </nav>
     <main>
+        <h2>Almacenamiento</h2>
+        <p>EL objeto local Storage es una interfaz de la API de almacenamiento web que provee acceso al almacenamiento tanto local como de sesión de un dominio en concreto, permitiendote manipular los elementos de dato almacenados.</p>
+        <form action="">
+            <label for="nombre">Nombre <input type="text" name="nombre" id="nombre" value="Juan"></label>
+            <label for="age">Edad <input type="number" name="age" id="age" value="43"></label>
+            <label for="masc">Mascota <input type="checkbox" name="masc" id="masc" checked></label>
+            <button type="button" onclick="save()">Guardar</button>
+        </form>
+        <h5>windows.localStorage</h5>
+        <p>Este mecanismo de almacenamiento conserva un área de almacenamiento separada para cada origen y estará disponible en la máquina, aunque se cierre el navegador y la página.</p>
+        <p>La propiedad localStorage te permite acceder al objeto de almacenamiento en local.</p>
+        <p>Sintaxis:</p>
+<pre>
+<code>
+    miStorage = window.localStorage;
+</code>
+</pre> 
+        <p> Al invocarlo, se creará una instancia del objeto Storage, a través del cual los datos pueden ser manipulados.</p>
+        <h5>windows.sessionStorage</h5>
+        <p>Este mecanismo de almacenamiento conserva un área de almacenamiento separada para cada origen y la información almacenada en sessionStorage es eliminada al finalizar la sesión de la página. La sesión de la página perdura mientras el navegador se encuentra abierto, y se mantiene por sobre las recargas y reaperturas de la página. Abrir una página en una nueva pestaña o ventana iniciará una nueva sesión, que es la principal diferencia con las cookies.</p>
+        <p>La propiedad sessionStorage te permite acceder al objeto de almacenamiento en la sesión actual.</p>
+        <p>Sintaxis:</p>
+<pre>
+<code>
+    miStorage = window.sessionStorage;
+</code>
+</pre> 
+        <p>Al invocarlo, se creará una instancia del objeto Storage, a través del cual los datos pueden ser manipulados.</p>
+        
+        <h5>Propiedades:</h5>
+            <p><strong>Storage.length:</strong> Retorna como  integer el número de elementos almacenados en el objeto.</p>
+<pre>
+<code>
+    localStorage.length;
+</code>
+</pre> 
+<div class="divResultados" id="lengthres"></div>
+        <button class="butJS" onclick="lengthres()">Ejemplo</button>
+            <h5>Métodos:</h5>
+            <p><strong> Storage.key(): </strong> Cuando se le pasa un número n, éste método retorna el nombre de la enésima clave en el almacenamiento.</p>
+<pre>
+<code>
+    storage.key(0):
+</code>
+</pre> 
+<div class="divResultados" id="keyres"></div>
+        <button class="butJS" onclick="keyres()">Ejemplo</button>
 
+           <p>*<strong>Storage.getItem(): </strong>Cuando se le pasa un nombre de clave, retorna el valor de esa clave.</p>
+<pre>
+<code>
+    storage.getItem(Nombre):
+</code>
+</pre>
+        <ul>Parámetros:
+            <li>keyName: Un DOMstring que contiene el nombre de la caja cuyo valor se quiere obtener.</li>
+        </ul>
+        <ul>Devuelve:
+            <li>Una DOMstring que contiene el valor de la clav</li>
+        </ul>
+<div class="divResultados" id="getres"></div>
+        <button class="butJS" onclick="getres()">Ejemplo</button>
+
+            <p>*<strong>Storage.setItem(): </strong>Cuando se le pasa un nombre de clave y un valor, añade dicha clave al almacenamiento, o la actualiza el valor de la clave si ya existe.</p>
+<pre>
+<code>
+    localStorage.setItem("nom_masc", "calcetines");
+</code>
+</pre>
+        <ul>Parámetros:
+            <li>keyName: Un DOMstring conteniendo la clave que se quiere crear/actualizar.</li>
+            <li>keyValue: Un DOMstring conteniendo el valor que se le quiere dar a la clave que se está creando/actualizando.</li>
+        </ul>
+<div class="divResultados" id="setres"></div>
+        <button class="butJS" onclick="setres()">Ejemplo</button>
+
+            <p><strong>Storage.removeItem(): </strong>Cuando se le pasa el nombre de una clave, eliminará dicha clave del almacenamiento.</p>
+<pre>
+<code>
+    localStorage.removeItems("nom_masc");
+</code>
+</pre> 
+<div class="divResultados" id="removes"></div>
+        <button class="butJS" onclick="removes()">Ejemplo</button>
+
+            <p><strong>Storage.clear(): </strong>Cuando es invocado vacía todas las claves del almacenamiento.</p>
+<pre>
+<code>
+    localStorage.clear();
+</code>
+</pre> 
+<div class="divResultados" id="clears"></div>
+        <button class="butJS" onclick="clears()">Ejemplo</button>
+
+        <h5>Tratar los datos</h5>
+        <p>Hay que tener en cuenta que tanto la clave como el valor deben ser strings.</p>
+        <p>Si fueran de cualquier otro tipo, como un número o un objeto, se convertirían a cadena de texto automáticamente.</p>
+        <p>pesar de eso, podemos utilizar JSON para almacenar objetos. El límite es de más de 5mb+, dependiendo del navegador.</p>
+<pre>
+<code>
+    localStorage.usuario = JSON.stringify({nombre: "Juan", edad: 43, mascota: true})
+</code>
+</pre>
     </main>
     <footer>
         <button class="but"><a href="index.html">Volver al índice</a></button>
     </footer>
     <script>
+        function save(){
+            const nombre = document.getElementById("nombre").value;
+            const edad = document.getElementById("age").value;
+            const mascota = document.getElementById("masc").checked;
 
+            localStorage.setItem("nombre", nombre);
+            localStorage.setItem("edad", edad);
+            localStorage.setItem("mascota", mascota);
+        }
+        function lengthres(){
+            let element = document.getElementById("lengthres");
+            
+            element.innerText = localStorage.length;
+        }
+        function keyres(){
+            let element = document.getElementById("keyres");
+            
+            element.innerText = localStorage.key(0);
+        }
+        function getres(){
+            let element = document.getElementById("getres");
+            
+            element.innerText = localStorage.getItem("nombre");
+        }
+        function setres(){
+            let element = document.getElementById("setres");
+            
+            localStorage.setItem("nom_masc", "calcetines");
+
+            element.innerText = localStorage.getItem("nom_masc");
+        }
+        function removes(){
+            let element = document.getElementById("removes");
+            
+            localStorage.removeItem("nom_masc");
+
+            element.innerText = "borrado";
+        }
+        function clears(){
+            let element = document.getElementById("clears");
+            
+            localStorage.clear();
+
+            element.innerText = "cleared";
+        }
     </script>
 </body>
 </html>
