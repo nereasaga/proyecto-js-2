@@ -17,17 +17,85 @@
             <li><a href="nodos.html">Creación y acceso a nodos</a></li>
             <li><a href="storage.html">Local storage / Session storage</a></li>
             <li><a href="ventanas.html">Creación de ventanas</a></li>
-        
-
+    
         </ul>
     </nav>
-    <main>
+    <main>        
+        <button id="bt" onclick="sibling()">Hola</button>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+        </ul>
+
 
     </main>
     <footer>
         <button class="but"><a href="index.html">Volver al índice</a></button>
     </footer>
     <script>
+        const listas = document.querySelectorAll("ul");
+        const segundaLista = listas[1];
+
+        function creaText() {
+            let para = document.createElement("p");
+            let node = document.createTextNode("Esto es nuevo.");
+            para.appendChild(node); // Inserta el texto en "node"
+            document.querySelector("main").appendChild(para); //Inserta el <p> en el main
+            // document.body.appendChild(para); //Inserta el <p> en el body
+        }
+
+        function crea() {
+            const creaUl = document.createElement("ul");
+            const creaLi = document.createElement("li");
+            creaLi.textContent = 'Elemento de lista';
+
+            creaUl.appendChild(creaLi); //Inserta un <li> en un <ul>
+            document.querySelector("main").appendChild(creaUl); // Inserta el <ul> en el main del HTML
+    }
+
+
+    function borra() {
+            // const buscaUl = document.querySelector("ul");
+            const borrarLi = segundaLista.lastChild;
+
+            segundaLista.removeChild(borrarLi); // Elimina el último elemento de <ul>  
+        }
+
+    function clona() {
+        // const original = document.querySelector("ul");
+        const copia = segundaLista.cloneNode(true);
+
+        document.querySelector("main").appendChild(copia); //añade una copia del <ul> y sus <li> en el body
+        }
+    
+    function insert() {
+        // const buscaUl = document.querySelector("ul");
+        const creaLi = document.createElement("li");
+        creaLi.textContent = "Elemento de lista";
+
+        segundaLista.insertBefore(creaLi, segundaLista.firstChild); // Inserta un <li> antes del primer hijo
+    }
+
+    function parent() {
+        const parentLi = document.querySelector("li");
+        console.log(parentLi.parentNode); // Muestra <ul>, elemento padre de <li>
+    }
+
+    function child() {
+        const buscaUl = document.querySelector("ul");
+        console.log(buscaUl.children);
+        console.log(buscaUl.childNodes);
+        console.log(buscaUl.firstChild);
+        console.log(buscaUl.firstElementChild);
+    }
+
+    function sibling() {
+        const buscaLi = document.querySelector('li');
+        console.log(buscaLi.nextElementSibling); // Muestra el siguiente elemento hermano
+        console.log(buscaLi.previousElementSibling); //  Muestra el elemento hermano anterior
+
+    }
+
 
     </script>
 </body>

@@ -84,6 +84,7 @@ main {
     flex-direction: column;
     justify-content: center;
     /* align-items: center; */
+    min-height: 20rem;
     width: 50%;
     margin-top: 2rem;
     margin-bottom: 2rem;
