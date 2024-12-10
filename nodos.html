@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="styles/style.css">
    </head>
    <style>
+    h3 {
+        width: 100%;
+        text-align: left;
+    }
+    h4 {
+        text-align: center;
+    }
 
    </style>
 <body>
@@ -21,9 +28,10 @@
         </ul>
     </nav>
     <main>
+        <h2>Creación y modificación</h2>
     
         <div class="divEjemplos"> 
-            <h3>createElement y createTextNode</h3>
+            <h4>createElement y createTextNode</h4>
             <p><strong> createElement</strong>
                 Crea un nodo de elemento en el DOM. (representación de una etiqueta HTML como nav, div, p…) <br>
                 <strong>createTextNode</strong>
@@ -33,7 +41,7 @@
             <button class="but" onclick="creaText()">createElement y createTextNode</button>
        </div>  
        <div id="idDivLista" class="divEjemplos">
-        <h3>appendChild</h3>
+        <h4>appendChild</h4>
             <p>Inserta un nodo al final de los nodos hijos de un nodo padre.</p>
             <ul>
                 <li>1</li>
@@ -43,27 +51,62 @@
         </div>
         <div class="divEjemplos">
             <button class="but" onclick="crea()">appendChild</button>
-            <h3>removeChild</h3>
-            <p>Elimina un nodo hijo de su nodo padre.</p>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-            </ul>
-            <button class="but" onclick="borra()">removeChild</button>
-            <h3>cloneNode</h3>
-            <p>Clona un nodo existente.</p>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-            </ul>
-            <button class="but" onclick="clona()">cloneNode</button>
-            <h3>insertBefore</h3>
+            <h4>insertBefore</h4>
             <p>Inserta un nodo antes de otro nodo hijo existente.</p>
             <ul>
                 <li>1</li>
                 <li>2</li>
             </ul>
             <button class="but" onclick="insert()">insertBefore</button>
+            <h4>removeChild</h4>
+            <p>Elimina un nodo hijo de su nodo padre.</p>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+            </ul>
+            <button class="but" onclick="borra()">removeChild</button>
+            <h4>cloneNode</h4>
+            <p>Clona un nodo existente.</p>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+            </ul>
+            <button class="but" onclick="clona()">cloneNode</button>
+
+        </div>
+        <h2>Acceso y navegación</h2>
+        <div class="divEjemplos">
+            <div class="divResultados"><ul>
+                <li>Elemento de lista 1</li>
+                <li>Elemento de lista 2</li>
+                <li>Elemento de lista 3</li>
+            </ul>
+        </div>
+            <h3>Hacia arriba</h3>
+            <h4>parentNode</h4>
+            <p>Devuelve el nodo padre.</p>
+            <button class="but" onclick="parent()">parentNode</button>
+            <h3>Entre hermanos</h3>
+            <h4>previousSibling / nextSibling</h4>
+            <p>Devuelve los nodos hermanos (incluye texto).</p>
+            <button class="but" onclick="buscaNextSibling()">nextSibling</button>
+            <h4>previousElementSibling / nextElementSibling</h4>
+            <p>Devuelve los nodos elementos hermanos.</p>
+            <button class="but" onclick="buscaNextElementSibling()">nextElementSibling</button>
+            <h3>Hacia abajo</h3>
+            <h4>childNodes</h4>
+            <p>Devuelve una lista de nodos hijos (incluye nodos de texto).</p>
+            <button class="but" onclick="buscaChildNodes()">childNodes</button>
+            <h4>children</h4>
+            <p>Devuelve solo los nodos elementos.</p>
+            <button class="but" onclick="buscaChildren()">children</button>
+            <h4>firstChild / lastChild</h4>
+            <p>Devuelve el primer o último hijo (incluye nodos de texto).</p>
+            <button class="but" onclick="buscaFirstChild()">firstChild</button>
+            <h4>firstElementChild / lastElementChild</h4>
+            <p>Devuelve el primer o último nodo hijo elemento.</p>
+            <button class="but" onclick="buscaFirstElementChild()">firstElementChild</button>
+            
         </div>
 
     </main>
@@ -93,54 +136,67 @@
             idDivLista.appendChild(creaUl); // Inserta el <ul> en el main del HTML
     }
 
+    function insert() {
+        // const buscaUl = document.querySelector("ul");
+        const segundaLista = listas[2];
+        const creaLi = document.createElement("li");
+        creaLi.textContent = "Nuevo elemento de lista";
+
+        segundaLista.insertBefore(creaLi, segundaLista.firstChild); // Inserta un <li> antes del primer hijo
+    }
+
 
     function borra() {
-            const segundaLista = listas[2];
+            const terceraLista = listas[3];
             // const buscaUl = document.querySelector("ul");
-            const borrarLi = segundaLista.lastChild;
+            const borrarLi = terceraLista.lastChild;
 
-            segundaLista.removeChild(borrarLi); // Elimina el último elemento de <ul>  
+            terceraLista.removeChild(borrarLi); // Elimina el último elemento de <ul>  
         }
 
     function clona() {
         // const original = document.querySelector("ul");
-        const terceraLista = listas[3];
-        const copia = terceraLista.cloneNode(true);
+        const cuartaLista = listas[4];
+        const copia = cuartaLista.cloneNode(true);
 
-        terceraLista.appendChild(copia); //añade una copia del <ul> y sus <li> en el body
+        cuartaLista.appendChild(copia); //añade una copia del <ul> y sus <li> en el body
         }
     
-    function insert() {
-        // const buscaUl = document.querySelector("ul");
-        const cuartaLista = listas[4];
-        const creaLi = document.createElement("li");
-        creaLi.textContent = "Nuevo elemento de lista";
-
-        cuartaLista.insertBefore(creaLi, cuartaLista.firstChild); // Inserta un <li> antes del primer hijo
-    }
+    const quintaLista = listas[5];
 
     function parent() {
-        const parentLi = document.querySelector("li");
+        const parentLi = quintaLista.querySelector("li");
         console.log(parentLi.parentNode); // Muestra <ul>, elemento padre de <li>
     }
 
-    function child() {
-
-
-        const buscaUl = document.querySelector("ul");
-        console.log(buscaUl.childNodes);   
-        console.log(buscaUl.children);
-        console.log(buscaUl.firstChild);
-        console.log(buscaUl.firstElementChild);
-
-
+    function buscaNextSibling() {
+        const buscaLi = quintaLista.querySelector("li");;
+        console.log(buscaLi.nextSibling); // Muestra el siguiente hermano
+    }
+    
+    function buscaNextElementSibling() {
+        const buscaLi = quintaLista.querySelector("li");
+        console.log(buscaLi.nextElementSibling); //  Muestra el elemento hermano anterior
     }
 
-    function sibling() {
-        const buscaLi = document.querySelector('li');
-        console.log(buscaLi.nextElementSibling); // Muestra el siguiente elemento hermano
-        console.log(buscaLi.previousElementSibling); //  Muestra el elemento hermano anterior
+    function buscaChildNodes() {
+        const buscaUl = quintaLista.querySelector("ul");
+        console.log(buscaUl.childNodes);   
+    }
 
+    function buscaChildren() {
+        const buscaUl = quintaLista.querySelector("ul");  
+        console.log(buscaUl.children);
+    }
+
+    function buscaFirstChild() {
+        const buscaUl = quintaLista.querySelector("ul");
+        console.log(buscaUl.firstChild);
+    }
+
+    function buscaFirstElementChild() {
+        const buscaUl = quintaLista.querySelector("ul");
+        console.log(buscaUl.firstElementChild);
     }
 
 
