@@ -21,6 +21,34 @@
         </ul>
     </nav>
     <main>
+        <h1>Ejemplo de uso de window.open y window.opener</h1>
+    <button class="but" onclick="abrirVentana()">Abrir Nueva Ventana 🚀</button>
+    <p id="mensaje">Hola este es un mensaje desde la pagina principal. 😊</p>
+
+    <script>
+        // Función para abrir la ventana nueva
+        function abrirVentana() {
+            // Definir las propiedades de la nueva ventana
+            var propiedades = "width=600,height=400,left=1000,top=100,resizable=yes,scrollbars=yes,status=yes,menubar=no,toolbar=no,location=no,directories=no";
+            
+            // Abrir la nueva ventana con las propiedades definidas
+            var ventanaNueva = window.open("", "_blank", propiedades);
+            
+            // Escribir contenido en la nueva ventana
+            ventanaNueva.document.write("<h2>Ventana Nueva Opener() 🪟</h2>");
+            ventanaNueva.document.write("<button onclick='window.opener.cambiarMensaje()'>Cambia el texto de la pagina principal 📝</button>");
+
+            // Definir la función para que la ventana nueva pueda cambiar el mensaje en la principal
+            ventanaNueva.cambiarMensaje = function() {
+                window.opener.cambiarMensaje();
+            };
+        }
+
+        // Función para cambiar el mensaje en la ventana principal
+        function cambiarMensaje() {
+            document.getElementById("mensaje").innerText = "¡Eh modificado el mensaje principal desde la ventana nueva! atravez de window opener() 😃";
+        }
+    </script>       
 
     </main>
     <footer>
