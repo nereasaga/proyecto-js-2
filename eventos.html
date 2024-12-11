@@ -195,43 +195,135 @@
         // event.target.id
         document.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', function(event) {
-                console.log('Button clicked:', event.target.id)
+                console.log('Button clicked:', event.target.id);
             });
         });
 
         // event.type
         document.getElementById('nameField1').addEventListener('keydown', function(event) {
-            console.log('Event type:', event.type)
+            console.log('Event type:', event.type);
         });
 
 
         // abort
         document.getElementById('image1').addEventListener('abort', function(event) {
-            console.log('The image load was completed or canceled')
+            console.log('The image load was completed or canceled');
         });
 
         // afterprint
         window.addEventListener('afterprint', function(event) {
-            console.log('The document has been printed successfully')
+            console.log('The document has been printed successfully');
         });
 
         // beforeprint
         window.addEventListener('beforeprint', function(event){
-            console.log('Getting ready for the document to get printed')
+            console.log('Getting ready for the document to get printed');
         });
 
         // beforeunload
         window.addEventListener('beforeunload', function(event){
-            console.log('You are about to get out of this website...')
+            console.log('You are about to get out of this website...');
         });
 
         // canplay
         document.getElementById('myVideo1').addEventListener('canplay', function(event) {
-            console.log('The video can play')
+            console.log('The video can play');
         });
 
         // canplaythrough
-        document.getElementById('myVideo2').addEventListener('')
+        document.getElementById('myVideo2').addEventListener('canplaythrough', function(event) {
+            console.log('You can play the whole video without interruptions');
+        });
+
+        // change
+        document.getElementById('nameField2').addEventListener('change', function(event) {
+            console.log('Input value changed: ', event.target.value);
+        });
+
+        // input
+        document.getElementById('nameField3').addEventListener('input', function(event) {
+            console.log('The current value is: ', event.target.value);
+        });
+
+        // ended
+        document.getElementById('myVideo3').addEventListener('ended', function(event) {
+            console.log('The video has finished playing');
+        });
+
+        // error
+        document.getElementById('image').addEventListener('error', function(event) {
+            console.log('There was an error, try reloading the website');
+        });
+
+        // fullscreenchange
+        document.getElementById('enterFullscreen1').addEventListener('click', function() {
+            document.documentElement.requestFullscreen();
+        });
+            document.addEventListener('fullscreenchange', function(){
+                console.log('Full-screen mode changed');
+            });
+
+        // fullscreenerror
+        document.getElementById('enterFullscreen2').addEventListener('click', function(){
+            let success = document.documentElement.requestFullscreen();
+            if (!success) {
+                console.log('Failed to enter full-screen mode');
+            }
+        });
+
+        document.addEventListener('fullscreenerror', function() {
+            console.log('An error occured while trying to enter full-screen mode');
+        });
+
+        // invalid
+        document.getElementById('nameField4').addEventListener('invalid', function(event) {
+            console.log('Please write a valid address email');
+        });
+
+        // load 
+        document.getElementById('image3').addEventListener('load', function(event) {
+            console.log('The image has been loaded');
+        });
+
+        // loadeddata
+        document.getElementById('myVideo4').addEventListener('loadeddata', function(event) {
+            console.log('The video has been loaded');
+        });
+
+        // loadedmetadata 
+        document.getElementById('myVideo5').addEventListener('loadedmetadata', function(event) {
+            console.log('Video metadata has been loaded');
+        });
+
+        // message
+        window.addEventListener('message', function(event) {
+            console.log('Message received: ', event.data);
+        });
+        window.postMessage('Hello, World!', '*');
+
+        // offline
+        window.addEventListener('offline', function(event) {
+            console.log('You are offline');
+        });
+
+        // online
+        window.addEventListener('online', function(event) {
+            console.log('You have come back online');
+        });
+
+        // open
+        const socket = new WebSocket('ws://example.com');
+        socket.addEventListener('open', function(event) {
+            console.log('Connection established')
+        });
+        
+        // event.target.node
+        document.getElementById('clickBtn').addEventListener('click', function(event) {
+            console.log('Element type: ', event.target.nodeName);
+        });
+
+        //currentTarget
+        document.getElementById
 
     </script>
 </body>
