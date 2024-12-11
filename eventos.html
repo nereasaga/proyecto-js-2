@@ -55,13 +55,10 @@
                     <input type="text" id="nameField1" placeholder="Type something...">
 
                 <h3>abort</h3>
-                    <img id="image1" src="invalid-image.img" alt="image">
+                    <img id="image1" src="assets/imagetest.jpg" alt="image">
 
-                <h3>afterprint</h3>
-                    <button onclick="window.print()">Print this image</button>
-
-                <h3>beforeprint</h3>
-                    <button onclick="window.print()">Print this page</button>
+                <h3>before print / afterprint</h3>
+                    <button onclick="window.print()">Print this document</button>
 
                 <h3>beforeunload</h3>
                     <p>The script is already running, make sure to exist without saving anything of what you have wrote</p>
@@ -97,7 +94,7 @@
                     <button id="enterFullscreen2">Enter Fullscreen</button>
 
                 <h3>invalid</h3>
-                    <input type="text" id="nameField4" placeholder="TYpe something...">
+                    <input type="text" id="nameField4" placeholder="Type something...">
 
                 <h3>load</h3>
                     <img id="image3" src="assets/imagetest.jpg">
@@ -196,63 +193,75 @@
         document.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', function(event) {
                 console.log('Button clicked:', event.target.id);
+                alert('Button clicked: '+ event.target.id);
             });
         });
 
         // event.type
         document.getElementById('nameField1').addEventListener('keydown', function(event) {
             console.log('Event type:', event.type);
+            alert('Event type: '+ event.type)
         });
 
 
         // abort
         document.getElementById('image1').addEventListener('abort', function(event) {
             console.log('The image load was completed or canceled');
+            alert('The image load was completed or canceled');
         });
 
         // afterprint
         window.addEventListener('afterprint', function(event) {
             console.log('The document has been printed successfully');
+            alert('The document has been printed successfully');
         });
 
         // beforeprint
         window.addEventListener('beforeprint', function(event){
             console.log('Getting ready for the document to get printed');
+            alert('Getting ready for the document to get printed');
         });
 
         // beforeunload
         window.addEventListener('beforeunload', function(event){
             console.log('You are about to get out of this website...');
+            alert('You are about to get out of this website...');
         });
 
         // canplay
         document.getElementById('myVideo1').addEventListener('canplay', function(event) {
-            console.log('The video can play');
+            console.log('You can play the video');
+            alert('You can play the video');
         });
 
         // canplaythrough
         document.getElementById('myVideo2').addEventListener('canplaythrough', function(event) {
             console.log('You can play the whole video without interruptions');
+            alert('You can play the whole video without interruptions');
         });
 
         // change
         document.getElementById('nameField2').addEventListener('change', function(event) {
             console.log('Input value changed: ', event.target.value);
+            alert('Input value changed: ' + event.target.value);
         });
 
         // input
         document.getElementById('nameField3').addEventListener('input', function(event) {
             console.log('The current value is: ', event.target.value);
+            alert('The current value is: ' + event.target.value)
         });
 
         // ended
         document.getElementById('myVideo3').addEventListener('ended', function(event) {
             console.log('The video has finished playing');
+            alert('The video has finished playing');
         });
 
         // error
         document.getElementById('image').addEventListener('error', function(event) {
-            console.log('There was an error, try reloading the website');
+            console.log('There was an error detected in the website');
+            alert('There was an error detected in the website');
         });
 
         // fullscreenchange
@@ -261,6 +270,7 @@
         });
             document.addEventListener('fullscreenchange', function(){
                 console.log('Full-screen mode changed');
+                alert('Full-screen mode changed');
             });
 
         // fullscreenerror
@@ -278,21 +288,25 @@
         // invalid
         document.getElementById('nameField4').addEventListener('invalid', function(event) {
             console.log('Please write a valid address email');
+            alert('Please write a valid address email');
         });
 
         // load 
         document.getElementById('image3').addEventListener('load', function(event) {
             console.log('The image has been loaded');
+            alert('The image has been loaded')
         });
 
         // loadeddata
         document.getElementById('myVideo4').addEventListener('loadeddata', function(event) {
             console.log('The video has been loaded');
+            alert('The video has been loaded');
         });
 
         // loadedmetadata 
         document.getElementById('myVideo5').addEventListener('loadedmetadata', function(event) {
             console.log('Video metadata has been loaded');
+            alert('Video metadata has been loaded')
         });
 
         // message
@@ -304,26 +318,32 @@
         // offline
         window.addEventListener('offline', function(event) {
             console.log('You are offline');
+            alert('You are offline');
         });
 
         // online
         window.addEventListener('online', function(event) {
             console.log('You have come back online');
+            alert('You have come back online');
         });
 
         // open
         const socket = new WebSocket('ws://example.com');
         socket.addEventListener('open', function(event) {
-            console.log('Connection established')
+            console.log('Connection established');
         });
         
         // event.target.node
         document.getElementById('clickBtn').addEventListener('click', function(event) {
             console.log('Element type: ', event.target.nodeName);
+            alert('Element type: ' + event.target.nodeName);
         });
 
         //currentTarget
-        document.getElementById
+        document.getElementById('container').addEventListener('click', function(event)  {
+            console.log('Event listener is attached to:', event.currentTarget.id);
+            alert('Event listener is attached to:'+ event.currentTarget.id);
+        });
 
     </script>
 </body>
