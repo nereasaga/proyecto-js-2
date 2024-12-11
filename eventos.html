@@ -48,39 +48,71 @@
 
                 <h3>event.target.id</h3>
 
+                    <button id="submitBtn">Submit</button>
+                    <button id="cancelBtn">Cancel</button>
+
                 <h3>event.type</h3>
+                    <input type="text" id="nameField1" placeholder="Type something...">
 
                 <h3>abort</h3>
+                    <img id="image1" src="invalid-image.img" alt="image">
 
                 <h3>afterprint</h3>
+                    <button onclick="window.print()">Print this image</button>
 
                 <h3>beforeprint</h3>
+                    <button onclick="window.print()">Print this page</button>
 
                 <h3>beforeunload</h3>
+                    <p>The script is already running, make sure to exist without saving anything of what you have wrote</p>
 
                 <h3>canplay</h3>
+                    <video id="myVideo1" controls>
+                        <source src="assets/videotest.mp4" type="video/mp4">
+                    </video>
 
                 <h3>canplaythrough</h3>
+                    <video id="myVideo2" controls>
+                        <source src="assets/videotest.mp4" type="video/mp4">
+                    </video>
 
                 <h3>change</h3>
+                    <input type="text" id="nameField2" placeholder="Type your name">
 
                 <h3>input</h3>
+                    <input type="text" id="nameField3" placeholder="Type your name">
 
                 <h3>ended</h3>
+                    <video id="myVideo3" controls>
+                        <source src="assets/videotest.mp4">
+                    </video>
 
                 <h3>error</h3>
+                    <img id="image" src="invalid-image.jpg" alt="Image">
 
                 <h3>fullscreenchange</h3>
+                    <button id="enterFullscreen1">Enter Fullscreen</button>
 
                 <h3>fullscreenerror</h3>
+                    <button id="enterFullscreen2">Enter Fullscreen</button>
 
                 <h3>invalid</h3>
+                    <input type="text" id="nameField4" placeholder="TYpe something...">
 
                 <h3>load</h3>
+                    <img id="image3" src="assets/imagetest.jpg">
 
                 <h3>loadeddata</h3>
+                    <video id="myVideo4" controls>
+                        <source src="assets/videotest.mp4">
+                    </video>
 
                 <h3>loadedmetadata</h3>
+                    <video id="myVideo5" controls>
+                        <source src="assets/videotest.mp4">
+                    </video>    
+
+
 
                 <h3>message</h3>
 
@@ -90,13 +122,25 @@
 
                 <h3>open</h3>
 
+
+
                 <h3>event.target.node</h3>
+                    <div>
+                        <button id="clickBtn">Click me</button>
+                    </div>
 
                 <h3>currentTarget</h3>
+                    <div id="container">
+                        <button id="button">Click Me</button>
+                    </div>
 
                 <h3>ASCII Code</h3>
+                    <input type="text" placeholder="Press a key">
 
                 <h3>screenX - screen</h3>
+                    <div style="height: 500px; background-color: lightblue;">
+                    <p>Click inside this box to get the mouse position!</p>
+                </div>
 
         </div>
 
@@ -144,6 +188,51 @@
 
         // Agrega el evento
         boton.addEventListener('click', manejarClick);
+
+
+
+                                // Youssef's code
+
+        // event.target.id
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(event) {
+                console.log('Button clicked:', event.target.id)
+            });
+        });
+
+        // event.type
+        document.getElementById('nameField1').addEventListener('keydown', function(event) {
+            console.log('Event type:', event.type)
+        });
+
+
+        // abort
+        document.getElementById('image1').addEventListener('abort', function(event) {
+            console.log('The image load was completed or canceled')
+        });
+
+        // afterprint
+        window.addEventListener('afterprint', function(event) {
+            console.log('The document has been printed successfully')
+        });
+
+        // beforeprint
+        window.addEventListener('beforeprint', function(event){
+            console.log('Getting ready for the document to get printed')
+        });
+
+        // beforeunload
+        window.addEventListener('beforeunload', function(event){
+            console.log('You are about to get out of this website...')
+        });
+
+        // canplay
+        document.getElementById('myVideo1').addEventListener('canplay', function(event) {
+            console.log('The video can play')
+        });
+
+        // canplaythrough
+        document.getElementById('myVideo2').addEventListener('')
 
     </script>
 </body>
