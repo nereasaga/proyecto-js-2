@@ -236,7 +236,7 @@ pre {
 
 }
 
-.divYoussef p {
+.divYoussef h3 {
     border-radius: 5px;
     padding: 10px;
     font-size: 20px;
@@ -244,5 +244,5 @@ pre {
     background-color: rgb(156, 250, 156);
     color: rgb(1, 122, 1);
     font-weight: bold;
-    
+
 }
