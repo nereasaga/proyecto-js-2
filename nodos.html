@@ -101,12 +101,13 @@ function borra() {
     const borrarLi = terceraLista.lastChild;
         
     terceraLista.removeChild(borrarLi);   
-    }
-            </code></pre>
+    }</code></pre>
+        <div class="divResultados">
             <ul>
                 <li>1</li>
                 <li>2</li>
             </ul>
+        </div>
             <button class="but" onclick="borra()">removeChild</button>
             <h4>cloneNode</h4>
             <p><strong>Clona un nodo existente.</strong></p>
@@ -116,14 +117,16 @@ function clona() {
     const copia = cuartaLista.cloneNode(true);
             
     cuartaLista.appendChild(copia); 
-    }
-            </code></pre>
+    }</code></pre>
+    <div class="divResultados">
+            
             <ul>
                 <li>1</li>
                 <li>2</li>
             </ul>
+        </div>
             <button class="but" onclick="clona()">cloneNode</button>
-
+            
         </div>
         <h2>Acceso y navegación</h2>
         <div class="divEjemplos">
@@ -134,11 +137,11 @@ function clona() {
                 <li>Elemento de lista 3</li>
             </ul>
             <pre><code>
-            &lt;ul&gt;
-                &lt;li&gt;Elemento de lista 1&lt;/li&gt;
-                &lt;li&gt;Elemento de lista 2&lt;/li&gt;
-                &lt;li&gt;Elemento de lista 3&lt;/li&gt;
-            &lt;/ul&gt;
+&lt;ul&gt;
+    &lt;li&gt;Elemento de lista 1&lt;/li&gt;
+    &lt;li&gt;Elemento de lista 2&lt;/li&gt;
+    &lt;li&gt;Elemento de lista 3&lt;/li&gt;
+&lt;/ul&gt;
         </code></pre>
         </div>
             <h3>Hacia arriba</h3>
