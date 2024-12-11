@@ -224,3 +224,24 @@ pre {
     text-align: center;
     justify-content: center;
 }
+
+
+
+/*     eventos - Youssef      */
+
+.divYoussef {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.divYoussef p {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    background-color: rgb(156, 250, 156);
+    color: rgb(1, 122, 1);
+    font-weight: bold;
+}
