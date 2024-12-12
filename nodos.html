@@ -29,7 +29,7 @@
     </nav>
     <main>
         <h2>Creación y modificación</h2>
-    
+    <!--   CREAR E INSTERTAR UN NODO Y TEXTO   -->
         <div class="divEjemplos"> 
             <h4>createElement y createTextNode</h4>
             <p><strong> createElement</strong>
@@ -51,6 +51,7 @@ function creaText() {
             <div id="idCreaText" class="divResultados"></div>      
             <button class="but" onclick="creaText()">createElement y createTextNode</button>
        </div>  
+<!--   INSERTAR NODO CHILD EN NODO PARENT   -->
        <div class="divEjemplos">
         <h4>appendChild</h4>
             <p><strong>Inserta un nodo al final de los nodos hijos de un nodo padre.</strong></p>
@@ -75,6 +76,7 @@ idDivLista.appendChild(creaUl);
         </div>
         <div class="divEjemplos">
             <button class="but" onclick="crea()">appendChild</button>
+        <!--   AÑADE CHILD A UN PARENT ANTES DE OTROS CHILDREN  -->
             <h4>insertBefore</h4>
             <p><strong>Inserta un nodo antes de otro nodo hijo existente.</strong></p>
             <pre><code>
@@ -93,6 +95,7 @@ function insert() {
             </ul>
         </div>
             <button class="but" onclick="insert()">insertBefore</button>
+            <!--   ELIMINA UN NODO CHILD DE UN PARENT   -->
             <h4>removeChild</h4>
             <p><strong>Elimina un nodo hijo de su nodo padre.</strong></p>
             <pre><code>
@@ -109,6 +112,7 @@ function borra() {
             </ul>
         </div>
             <button class="but" onclick="borra()">removeChild</button>
+            <!--   CLONA UN NODO COMPLETO   -->
             <h4>cloneNode</h4>
             <p><strong>Clona un nodo existente.</strong></p>
             <pre><code>
@@ -145,6 +149,7 @@ function clona() {
         </code></pre>
         </div>
             <h3>Hacia arriba</h3>
+            <!--   BÚSQUEDA DE NODO PADRE   -->
             <h4>parentNode</h4>
             <p><strong>Devuelve el nodo padre.</strong></p>
             <pre><code>
@@ -156,6 +161,7 @@ function parent() {
 
             <button class="but" onclick="parent()">parentNode</button>
             <h3>Entre hermanos</h3>
+            <!--   BÚSQUEDA DE NODOS HERMANOS + TEXTO   -->
             <h4>previousSibling / nextSibling</h4>
             <p><strong>Devuelve los nodos hermanos (incluye texto).</strong></p>
             <pre><code>
@@ -166,6 +172,7 @@ function buscaNextSibling() {
             </code></pre>
 
             <button class="but" onclick="buscaNextSibling()">nextSibling</button>
+            <!--   BÚSQUEDA DE NODOS HERMANOS SIN NODOS DE TEXTO   -->
             <h4>previousElementSibling / nextElementSibling</h4>
             <p><strong>Devuelve los nodos elementos hermanos.</strong></p>
             
@@ -177,6 +184,7 @@ function buscaNextElementSibling() {
             </code></pre>
             <button class="but" onclick="buscaNextElementSibling()">nextElementSibling</button>
             <h3>Hacia abajo</h3>
+            <!--   BÚSQUEDA DE NODOS CHILDREN + NODOS DE TEXTO   -->
             <h4>childNodes</h4>
             <p><strong>Devuelve una lista de nodos hijos (incluye nodos de texto).</strong></p>
             <pre><code>
@@ -185,6 +193,7 @@ function buscaChildNodes() {
     }
                             </code></pre>
             <button class="but" onclick="buscaChildNodes()">childNodes</button>
+            <!--   BÚSQUEDA DE NODOS CHILDREN SIN NODOS DE TEXTO   -->
             <h4>children</h4>
             <p><strong>Devuelve solo los nodos elementos.</strong></p>
             <pre><code>
@@ -193,6 +202,7 @@ function buscaChildren() {
     }
             </code></pre>
             <button class="but" onclick="buscaChildren()">children</button>
+            <!--   BÚSQUEDA DE PRIMER O ÚLTIMO CHILD CON NODOS DE TEXTO   -->
             <h4>firstChild / lastChild</h4>
             <p><strong>Devuelve el primer o último hijo (incluye nodos de texto).</strong></p>
             <pre><code>
@@ -201,6 +211,7 @@ function buscaFirstChild() {
     }    
             </code></pre>
             <button class="but" onclick="buscaFirstChild()">firstChild</button>
+            <!--   BÚSQUEDA DE PRIMER O ÚLTIMO CHILD SIN NODOS DE TEXTO   -->
             <h4>firstElementChild / lastElementChild</h4>
             <p><strong>Devuelve el primer o último nodo hijo elemento.</strong></p>
             <pre><code>
@@ -217,17 +228,20 @@ function buscaFirstElementChild() {
         <button class="but"><a href="index.html">Volver al índice</a></button>
     </footer>
     <script>
+        //SELECCIÓN DE TODOS LOS ELEMENTOS UL
         const listas = document.querySelectorAll("ul");
 
+        //CREAR E INSERTAR UN NODO Y TEXTO
         function creaText() {
             let para = document.createElement("p");
             let node = document.createTextNode("Esto es nuevo.");
             para.appendChild(node); // Inserta el texto en "node"
             const idCreaText = document.getElementById("idCreaText");
-            idCreaText.appendChild(para); //Inserta el <p> en el main
+            idCreaText.appendChild(para); //Inserta el <p> en el div indicado
             // document.body.appendChild(para); //Inserta el <p> en el body
         }
 
+        //INSERTAR NODO CHILD EN NODO PARENT
         function crea() {
             const creaUl = document.createElement("ul");
             const creaLi = document.createElement("li");
@@ -239,6 +253,7 @@ function buscaFirstElementChild() {
             idDivLista.appendChild(creaUl); // Inserta el <ul> en el div indicado
     }
 
+    //AÑADE CHILD A UN PARENT ANTES DE OTROS CHILDREN
     function insert() {
         // const buscaUl = document.querySelector("ul");
         const segundaLista = listas[2];
@@ -248,7 +263,7 @@ function buscaFirstElementChild() {
         segundaLista.insertBefore(creaLi, segundaLista.firstChild); // Inserta un <li> antes del primer hijo
     }
 
-
+    //ELIMINA UN NODO CHILD DE UN PARENT
     function borra() {
             const terceraLista = listas[3];
             // const buscaUl = document.querySelector("ul");
@@ -257,44 +272,53 @@ function buscaFirstElementChild() {
             terceraLista.removeChild(borrarLi); // Elimina el último elemento de <ul>  
         }
 
+    //CLONA UN NODO COMPLETO 
     function clona() {
         // const original = document.querySelector("ul");
         const cuartaLista = listas[4];
-        const copia = cuartaLista.cloneNode(true);
+        const copia = cuartaLista.cloneNode(true); //clona el elemento indicado
 
-        cuartaLista.appendChild(copia); //añade una copia del <ul> y sus <li> 
+        cuartaLista.appendChild(copia); //añade una copia del <ul> y sus <li> a un parent
         }
     
+    //ASIGNACIÓN DE LA LISTA CON ÍNDICE 5 A UNA VARIABLE
     const quintaLista = listas[5];
 
+    //BÚSQUEDA DE NODO PADRE
     function parent() {
         const parentLi = quintaLista.querySelector("li");
         console.log(parentLi.parentNode); // Muestra <ul>, elemento padre de <li>
     }
 
+    //BÚSQUEDA DE NODOS HERMANOS + TEXTO
     function buscaNextSibling() {
         const buscaLi = quintaLista.querySelector("li");
 
         console.log(quintaLista.nextSibling); // Muestra el siguiente hermano
     }
     
+    //BÚSQUEDA DE NODOS HERMANOS SIN NODOS DE TEXTO
     function buscaNextElementSibling() {
         const buscaLi = quintaLista.querySelector("li");
         console.log(buscaLi.nextElementSibling); //  Muestra el siguiente elemento hermano 
     }
 
+    //BÚSQUEDA DE NODOS CHILDREN + NODOS DE TEXTO
     function buscaChildNodes() {
         console.log(quintaLista.childNodes);   
     }
 
+    //BÚSQUEDA DE NODOS CHILDREN SIN NODOS DE TEXTO
     function buscaChildren() {
         console.log(quintaLista.children);
     }
 
+    //BÚSQUEDA DE PRIMER CHILD CON NODOS DE TEXTO
     function buscaFirstChild() {
         console.log(quintaLista.firstChild);
     }
 
+    //BÚSQUEDA DE PRIMER CHILD SIN NODOS DE TEXTO
     function buscaFirstElementChild() {
 
         console.log(quintaLista.firstElementChild);
