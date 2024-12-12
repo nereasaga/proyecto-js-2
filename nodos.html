@@ -240,12 +240,37 @@ function buscaFirstElementChild() {
             <button class="but" onclick="buscaFirstElementChild()">firstElementChild</button>
             
         </div>
-
+        <h2>Ejemplo con .remove</h2>
+        
+            <pre><code>
+const listaBotones = document.querySelector(".ulBotones");
+    listaBotones.addEventListener("click", function(){
+        let idNodo = event.target.id;
+        let nombreNodo = event.target.nodeName;
+        
+        if (nombreNodo == "BUTTON") {
+        const botonBorrar = document.getElementById(idNodo);
+                  
+        botonBorrar.parentNode.remove();
+        }
+    });  
+        
+            </code></pre>
+            
+            <ul class="ulBotones">
+            <li><button id="bot1" class="but">Bórrame</button></li>
+            <li><button id="bot2" class="but">A mi también</button></li>
+            <li><button id="bot3" class="but">Y a mí</button></li>
+        </ul>
+        
     </main>
     <footer>
         <button class="but"><a href="index.html">Volver al índice</a></button>
     </footer>
     <script>
+
+    
+
         //SELECCIÓN DE TODOS LOS ELEMENTOS UL
         const listas = document.querySelectorAll("ul");
 
@@ -349,6 +374,18 @@ function buscaFirstElementChild() {
         console.log(sextaLista.firstElementChild);
     }
 
+    //EJEMPLO CON BOTONES PARA REMOVE
+    const listaBotones = document.querySelector(".ulBotones");
+        listaBotones.addEventListener("click", function(){
+            let idNodo = event.target.id;
+            let nombreNodo = event.target.nodeName;
+
+        if (nombreNodo == "BUTTON") {
+          const botonBorrar = document.getElementById(idNodo);
+          
+          botonBorrar.parentNode.remove();
+        }
+      });  
 
     </script>
 </body>
