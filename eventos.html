@@ -132,7 +132,7 @@
                     </div>
 
                 <h3>ASCII Code</h3>
-                    <input type="text" placeholder="Press a key">
+                    <input type="text" id="asciiInput" placeholder="Press a key">
 
                 <h3>screenX - screen</h3>
                     <div style="height: 500px; background-color: lightblue;">
@@ -198,11 +198,14 @@
         });
 
         // event.type
-        document.getElementById('nameField1').addEventListener('keydown', function(event) {
-            console.log('Event type:', event.type);
-            alert('Event type: '+ event.type)
-        });
+        const nameField = document.getElementById('nameField1');
+        const eventTypes = ['keydown', 'keyup', 'focus'];
 
+        eventTypes.forEach(eventType => {
+            nameField.addEventListener(eventType, function(event) {
+                console.log(`Event type: ${event.type}`);
+            });
+        });
 
         // abort
         document.getElementById('image1').addEventListener('abort', function(event) {
@@ -231,25 +234,21 @@
         // canplay
         document.getElementById('myVideo1').addEventListener('canplay', function(event) {
             console.log('You can play the video');
-            alert('You can play the video');
         });
 
         // canplaythrough
         document.getElementById('myVideo2').addEventListener('canplaythrough', function(event) {
             console.log('You can play the whole video without interruptions');
-            alert('You can play the whole video without interruptions');
         });
 
         // change
         document.getElementById('nameField2').addEventListener('change', function(event) {
             console.log('Input value changed: ', event.target.value);
-            alert('Input value changed: ' + event.target.value);
         });
 
         // input
         document.getElementById('nameField3').addEventListener('input', function(event) {
             console.log('The current value is: ', event.target.value);
-            alert('The current value is: ' + event.target.value)
         });
 
         // ended
@@ -294,19 +293,16 @@
         // load 
         document.getElementById('image3').addEventListener('load', function(event) {
             console.log('The image has been loaded');
-            alert('The image has been loaded')
         });
 
         // loadeddata
         document.getElementById('myVideo4').addEventListener('loadeddata', function(event) {
             console.log('The video has been loaded');
-            alert('The video has been loaded');
         });
 
         // loadedmetadata 
         document.getElementById('myVideo5').addEventListener('loadedmetadata', function(event) {
             console.log('Video metadata has been loaded');
-            alert('Video metadata has been loaded')
         });
 
         // message
@@ -328,7 +324,7 @@
         });
 
         // open
-        const socket = new WebSocket('ws://example.com');
+        const socket = new WebSocket('wss://demo.piesocket.com/v3/channel_123?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self');
         socket.addEventListener('open', function(event) {
             console.log('Connection established');
         });
@@ -343,6 +339,12 @@
         document.getElementById('container').addEventListener('click', function(event)  {
             console.log('Event listener is attached to:', event.currentTarget.id);
             alert('Event listener is attached to:'+ event.currentTarget.id);
+        });
+
+        // ASCII
+        document.getElementById('asciiInput').addEventListener('keydown', function(event) {
+            console.log('KeyName Code: ', event.key);
+            console.log('ASCII Code: ', event.keyCode);
         });
 
     </script>
