@@ -95,20 +95,38 @@ function insert() {
             </ul>
         </div>
             <button class="but" onclick="insert()">insertBefore</button>
-            <!--   ELIMINA UN NODO CHILD DE UN PARENT   -->
-            <h4>removeChild</h4>
-            <p><strong>Elimina un nodo hijo de su nodo padre.</strong></p>
+            <!--   ELIMINA UN NODO COMPLETO   -->
+            <h4>remove</h4>
+            <p><strong>Elimina un nodo completo.</strong></p>
             <pre><code>
-function borra() {
+function borraNodo() {
     const terceraLista = listas[3];
-    const borrarLi = terceraLista.lastChild;
         
-    terceraLista.removeChild(borrarLi);   
+    terceraLista.remove();   
     }</code></pre>
         <div class="divResultados">
             <ul>
                 <li>1</li>
                 <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+            <button class="but" onclick="borraNodo()">remove</button>
+            <!--   ELIMINA UN NODO CHILD DE UN PARENT   -->
+            <h4>removeChild</h4>
+            <p><strong>Elimina un nodo hijo de su nodo padre.</strong></p>
+            <pre><code>
+function borra() {
+    const cuartaLista = listas[4];
+    const borrarLi = cuartaLista.lastChild;
+        
+    cuartaLista.removeChild(borrarLi);   
+    }</code></pre>
+        <div class="divResultados">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
             </ul>
         </div>
             <button class="but" onclick="borra()">removeChild</button>
@@ -117,10 +135,10 @@ function borra() {
             <p><strong>Clona un nodo existente.</strong></p>
             <pre><code>
 function clona() {
-    const cuartaLista = listas[4];
-    const copia = cuartaLista.cloneNode(true);
+    const quintaLista = listas[5];
+    const copia = quintaLista.cloneNode(true);
             
-    cuartaLista.appendChild(copia); 
+    quintaLista.appendChild(copia); 
     }</code></pre>
     <div class="divResultados">
             
@@ -154,7 +172,7 @@ function clona() {
             <p><strong>Devuelve el nodo padre.</strong></p>
             <pre><code>
 function parent() {
-    const parentLi = quintaLista.querySelector("li");
+    const parentLi = sextaLista.querySelector("li");
     console.log(parentLi.parentNode); 
     }
             </code></pre>
@@ -166,8 +184,8 @@ function parent() {
             <p><strong>Devuelve los nodos hermanos (incluye texto).</strong></p>
             <pre><code>
 function buscaNextSibling() {
-    const buscaLi = quintaLista.querySelector("li");
-    console.log(quintaLista.nextSibling); 
+    const buscaLi = sextaLista.querySelector("li");
+    console.log(sextaLista.nextSibling); 
     }
             </code></pre>
 
@@ -178,7 +196,7 @@ function buscaNextSibling() {
             
             <pre><code>
 function buscaNextElementSibling() {
-    const buscaLi = quintaLista.querySelector("li");
+    const buscaLi = sextaLista.querySelector("li");
     console.log(buscaLi.nextElementSibling); 
     }
             </code></pre>
@@ -189,7 +207,7 @@ function buscaNextElementSibling() {
             <p><strong>Devuelve una lista de nodos hijos (incluye nodos de texto).</strong></p>
             <pre><code>
 function buscaChildNodes() {
-    console.log(quintaLista.childNodes);   
+    console.log(sextaLista.childNodes);   
     }
                             </code></pre>
             <button class="but" onclick="buscaChildNodes()">childNodes</button>
@@ -198,7 +216,7 @@ function buscaChildNodes() {
             <p><strong>Devuelve solo los nodos elementos.</strong></p>
             <pre><code>
 function buscaChildren() {
-    console.log(quintaLista.children);
+    console.log(sextaLista.children);
     }
             </code></pre>
             <button class="but" onclick="buscaChildren()">children</button>
@@ -207,7 +225,7 @@ function buscaChildren() {
             <p><strong>Devuelve el primer o último hijo (incluye nodos de texto).</strong></p>
             <pre><code>
 function buscaFirstChild() {
-    console.log(quintaLista.firstChild);
+    console.log(sextaLista.firstChild);
     }    
             </code></pre>
             <button class="but" onclick="buscaFirstChild()">firstChild</button>
@@ -216,7 +234,7 @@ function buscaFirstChild() {
             <p><strong>Devuelve el primer o último nodo hijo elemento.</strong></p>
             <pre><code>
 function buscaFirstElementChild() {
-    console.log(quintaLista.firstElementChild);
+    console.log(sextaLista.firstElementChild);
     }
             </code></pre>
             <button class="but" onclick="buscaFirstElementChild()">firstElementChild</button>
@@ -263,65 +281,72 @@ function buscaFirstElementChild() {
         segundaLista.insertBefore(creaLi, segundaLista.firstChild); // Inserta un <li> antes del primer hijo
     }
 
+    //ELIMINA UN NODO COMPLETO
+    function borraNodo() {
+        const terceraLista = listas[3];
+        
+        terceraLista.remove();  
+    } 
+
     //ELIMINA UN NODO CHILD DE UN PARENT
     function borra() {
-            const terceraLista = listas[3];
+            const cuartaLista = listas[4];
             // const buscaUl = document.querySelector("ul");
-            const borrarLi = terceraLista.lastChild;
+            const borrarUltimoLi = cuartaLista.lastChild;
 
-            terceraLista.removeChild(borrarLi); // Elimina el último elemento de <ul>  
+            cuartaLista.removeChild(borrarUltimoLi); // Elimina el último elemento de <ul>  
         }
 
     //CLONA UN NODO COMPLETO 
     function clona() {
         // const original = document.querySelector("ul");
-        const cuartaLista = listas[4];
-        const copia = cuartaLista.cloneNode(true); //clona el elemento indicado
+        const quintaLista = listas[5];
+        const copia = quintaLista.cloneNode(true); //clona el elemento indicado
 
-        cuartaLista.appendChild(copia); //añade una copia del <ul> y sus <li> a un parent
+        quintaLista.appendChild(copia); //añade una copia del <ul> y sus <li> a un parent
         }
     
     //ASIGNACIÓN DE LA LISTA CON ÍNDICE 5 A UNA VARIABLE
-    const quintaLista = listas[5];
+    const sextaLista = listas[6];
 
     //BÚSQUEDA DE NODO PADRE
     function parent() {
-        const parentLi = quintaLista.querySelector("li");
+        const parentLi = sextaLista.querySelector("li");
         console.log(parentLi.parentNode); // Muestra <ul>, elemento padre de <li>
     }
 
     //BÚSQUEDA DE NODOS HERMANOS + TEXTO
     function buscaNextSibling() {
-        const buscaLi = quintaLista.querySelector("li");
+        const buscaLi = sextaLista.querySelector("li");
 
-        console.log(quintaLista.nextSibling); // Muestra el siguiente hermano
+        console.log(sextaLista.nextSibling); // Muestra el siguiente hermano
     }
     
     //BÚSQUEDA DE NODOS HERMANOS SIN NODOS DE TEXTO
     function buscaNextElementSibling() {
-        const buscaLi = quintaLista.querySelector("li");
+        const buscaLi = sextaLista.querySelector("li");
         console.log(buscaLi.nextElementSibling); //  Muestra el siguiente elemento hermano 
     }
 
     //BÚSQUEDA DE NODOS CHILDREN + NODOS DE TEXTO
     function buscaChildNodes() {
-        console.log(quintaLista.childNodes);   
+        console.log(sextaLista.childNodes);   
     }
 
     //BÚSQUEDA DE NODOS CHILDREN SIN NODOS DE TEXTO
     function buscaChildren() {
-        console.log(quintaLista.children);
+        console.log(sextaLista.children);
     }
 
     //BÚSQUEDA DE PRIMER CHILD CON NODOS DE TEXTO
     function buscaFirstChild() {
-        console.log(quintaLista.firstChild);
+        console.log(sextaLista.firstChild);
     }
 
     //BÚSQUEDA DE PRIMER CHILD SIN NODOS DE TEXTO
     function buscaFirstElementChild() {
 
-        console.log(quintaLista.firstElementChild);
+        console.log(sextaLista.firstElementChild);
     }
 
 
