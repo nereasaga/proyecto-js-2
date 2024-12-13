@@ -47,31 +47,32 @@
             <h2>Object event</h2>
 
                 <h3>event.target.id</h3>
-
                     <button id="submitBtn">Submit</button>
                     <button id="cancelBtn">Cancel</button>
 
                 <h3>event.type</h3>
                     <input type="text" id="nameField1" placeholder="Type something...">
 
-                <h3>abort</h3>
-                    <img id="image1" src="assets/imagetest.jpg" alt="image">
-
+                    <h3>Abort</h3>
+                    <img id="myImage" src="assets/imagetest.jpg" alt="image" width="300">
+                    <button id="cancelLoading">Cancel Image Loading</button>
+                    
                 <h3>before print / afterprint</h3>
                     <button onclick="window.print()">Print this document</button>
 
                 <h3>beforeunload</h3>
-                    <p>It make sure the user doesn't leave the page till he save the changes</p>
 
                 <h3>canplay</h3>
                     <video id="myVideo1" controls>
                         <source src="assets/videotest.mp4" type="video/mp4">
                     </video>
+                    <p id="canplay"></p>
 
                 <h3>canplaythrough</h3>
                     <video id="myVideo2" controls>
                         <source src="assets/videotest.mp4" type="video/mp4">
                     </video>
+                    <p id="canplaythrough"></p>
 
                 <h3>change</h3>
                     <input type="text" id="nameField2" placeholder="Type your name">
@@ -85,7 +86,7 @@
                     </video>
 
                 <h3>error</h3>
-                    <img id="image" src="invalid-image.jpg" alt="Image">
+                    <img id="image" src="assets/invalid-image.jpg" alt="Image">
 
                 <h3>fullscreenchange</h3>
                     <button id="enterFullscreen1">Enter Fullscreen</button>
@@ -94,22 +95,25 @@
                     <button id="enterFullscreen2">Enter Fullscreen</button>
 
                 <h3>invalid</h3>
-                    <input type="text" id="nameField4" placeholder="Type something...">
-
+                <form>
+                    <input type="email" id="nameField4" requiered>
+                    <button type="Submit">Send</button>
+                </form>
                 <h3>load</h3>
-                    <img id="image3" src="assets/imagetest.jpg">
+                    <video id="loadvideo" controls>
+                        <source src="assets/videotest.mp4">
+                    </video>
 
                 <h3>loadeddata</h3>
                     <video id="myVideo4" controls>
                         <source src="assets/videotest.mp4">
                     </video>
+                    <p id="loadeddata"></p>
 
                 <h3>loadedmetadata</h3>
-                    <video id="myVideo5" controls>
-                        <source src="assets/videotest.mp4">
-                    </video>    
-
-
+                <video id="myVideo5" controls>
+                    <source src="assets/videotest.mp4" type="video/mp4">
+                </video>
 
                 <h3>message</h3>
 
@@ -118,6 +122,7 @@
                 <h3>online</h3>
 
                 <h3>open</h3>
+                    <p>head over network -> message! and check all the messages that have been sent to the server</p>
 
 
 
@@ -127,7 +132,7 @@
                     </div>
 
                 <h3>currentTarget</h3>
-                    <div id="container">
+                    <div id="containerP">
                         <button id="button">Click Me</button>
                     </div>
 
@@ -135,7 +140,7 @@
                     <input type="text" id="asciiInput" placeholder="Press a key">
 
                 <h3>screenX - screen</h3>
-                    <div style="height: 500px; background-color: lightblue;">
+                    <div id="mousePosition" style="height: 500px; background-color: lightblue;">
                     <p>Click inside this box to get the mouse position!</p>
                 </div>
 
@@ -192,14 +197,14 @@
         // event.target.id
         document.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', function(event) {
-                console.log('Button clicked:', event.target.id);
-                alert('Button clicked: '+ event.target.id);
+                console.log('The id of the button clicked is:', event.target.id);
+                alert('The id of the button clicked is: '+ event.target.id);
             });
         });
 
         // event.type
         const nameField = document.getElementById('nameField1');
-        const eventTypes = ['keydown', 'keyup', 'focus'];
+        const eventTypes = ['keyup', 'focus', 'keypress'];
 
         eventTypes.forEach(eventType => {
             nameField.addEventListener(eventType, function(event) {
@@ -208,9 +213,16 @@
         });
 
         // abort
-        document.getElementById('image1').addEventListener('abort', function(event) {
-            console.log('The image load was completed or canceled');
-            alert('The image load was completed or canceled');
+        const image = document.getElementById('myImage');
+        const cancelButton = document.getElementById('cancelLoading');
+
+        image.addEventListener('abort', function() {
+            console.log('Image loading was aborted!');
+            alert('Image loading was aborted!');
+        });
+
+        cancelButton.addEventListener('click', function() {
+            image.src = '';
         });
 
         // afterprint
@@ -226,19 +238,27 @@
         });
 
         // beforeunload
-        window.addEventListener('beforeunload', function(event){
-            console.log('You are about to get out of this website...');
-            alert('You are about to get out of this website...');
-        });
+
+        window.addEventListener('beforeunload', ()=>{
+        event.preventDefault();
+        event.returnValue = "";
+        })
+
 
         // canplay
         document.getElementById('myVideo1').addEventListener('canplay', function(event) {
             console.log('You can play the video');
+            let result = 'You can play the video'
+
+            document.getElementById('canplay').innerText = result;
         });
 
         // canplaythrough
         document.getElementById('myVideo2').addEventListener('canplaythrough', function(event) {
             console.log('You can play the whole video without interruptions');
+            let result = 'You can play the whole video without interruptions';
+
+            document.getElementById('canplaythrough').innerText = result;
         });
 
         // change
@@ -267,10 +287,7 @@
         document.getElementById('enterFullscreen1').addEventListener('click', function() {
             document.documentElement.requestFullscreen();
         });
-            document.addEventListener('fullscreenchange', function(){
-                console.log('Full-screen mode changed');
-                alert('Full-screen mode changed');
-            });
+
 
         // fullscreenerror
         document.getElementById('enterFullscreen2').addEventListener('click', function(){
@@ -290,19 +307,25 @@
             alert('Please write a valid address email');
         });
 
-        // load 
-        document.getElementById('image3').addEventListener('load', function(event) {
-            console.log('The image has been loaded');
-        });
+        // load
+
+        document.getElementById('loadvideo').addEventListener('click', function() {
+            console.log(loadvideo.load())
+        })
 
         // loadeddata
         document.getElementById('myVideo4').addEventListener('loadeddata', function(event) {
-            console.log('The video has been loaded');
+            const loadeddata = 'The video has been loaded'
+            console.log(loadeddata);
         });
 
-        // loadedmetadata 
-        document.getElementById('myVideo5').addEventListener('loadedmetadata', function(event) {
-            console.log('Video metadata has been loaded');
+        // loadedmetadata
+        const video = document.getElementById('myVideo5');
+
+        video.addEventListener('loadedmetadata', function() {
+            console.log("Video duration:", video.duration);
+            console.log("Video currentime:", video.currentTime);
+            console.log("Video width:", video.width);
         });
 
         // message
@@ -319,8 +342,9 @@
 
         // online
         window.addEventListener('online', function(event) {
-            console.log('You have come back online');
-            alert('You have come back online');
+            const online = 'You have come back online'
+            console.log(online);
+            alert(online);
         });
 
         // open
@@ -336,15 +360,26 @@
         });
 
         //currentTarget
-        document.getElementById('container').addEventListener('click', function(event)  {
-            console.log('Event listener is attached to:', event.currentTarget.id);
-            alert('Event listener is attached to:'+ event.currentTarget.id);
+        document.getElementById('containerP').addEventListener('click', function(event)  {
+            const currentTarget = 'Event listener is attached to: ';
+            console.log(currentTarget, event.currentTarget.id);
+            alert(currentTarget + event.currentTarget.id);
         });
 
         // ASCII
         document.getElementById('asciiInput').addEventListener('keydown', function(event) {
             console.log('KeyName Code: ', event.key);
             console.log('ASCII Code: ', event.keyCode);
+        });
+
+        // ScreenX - ScreenY
+        const box = document.getElementById('mousePosition');
+
+        box.addEventListener('click', function(event){
+            const x = event.screenX;
+            const y = event.screenY;
+
+            console.log(`Mouse Position: X = ${x}, Y = ${y}`)
         });
 
     </script>
