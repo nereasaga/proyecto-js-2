@@ -218,7 +218,6 @@
 
         image.addEventListener('abort', function() {
             console.log('Image loading was aborted!');
-            alert('Image loading was aborted!');
         });
 
         cancelButton.addEventListener('click', function() {
@@ -290,15 +289,20 @@
 
 
         // fullscreenerror
-        document.getElementById('enterFullscreen2').addEventListener('click', function(){
-            let success = document.documentElement.requestFullscreen();
-            if (!success) {
-                console.log('Failed to enter full-screen mode');
+        document.getElementById('enterFullscreen').addEventListener('click', function() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen()
+                    .then(() => {
+                        // After fullscreen is entered, show an alert.
+                        alert("You are now in fullscreen mode!");
+                    })
+                    .catch(err => {
+                        // Handle failure to enter fullscreen
+                        alert("Failed to enter fullscreen. Error: " + err.message);
+                    });
+            } else {
+                alert("Your browser doesn't support fullscreen.");
             }
-        });
-
-        document.addEventListener('fullscreenerror', function() {
-            console.log('An error occured while trying to enter full-screen mode');
         });
 
         // invalid
