@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/style.css">
    </head>
    <style>
+     .red { background: red }
 
    </style>
 <body>
@@ -22,24 +23,56 @@
         </ul>
     </nav>
     <main>
-        <button id="boton">Haz clic aquí</button>
+ <!--Ejemplo de .addEventListener() -->
+        <div class="divsilvia">
+            <h2>.addEventListener()</h2>
+          <p> const button = document.querySelector("button");<br>
+              function action() {alert("Hello!"); };<br>
+              button.addEventListener("click", action);<br>
+                1️⃣ Buscamos el elemento que tendrá el evento, en este caso button<br>
+                2️⃣ Creamos una función action() que realizará la acción deseada.<br>
+                3️⃣ En el botón, escuchamos el evento click y le asociamos la función action.</p>
 
-        <div id="miCaja" style="width: 100px; height: 100px; border: 1px solid black;">
-            Pasa el ratón
-        </div>
+             <button>Click me</button>
+         </div>
+  <!--multiples funciones-->
+         <div class="divsilvia1">
+            <h2>Multiples funcionalidades</h2>
+            <p>permite asociar múltiples funciones a un mismo evento<br>
+                const button = document.querySelector("button");<br>
+                const action = () => alert("Hello!");<br>
+                const toggle = () => button.classList.toggle("red");<br>
+                
+                button.addEventListener("click", action);<br> 
+                button.addEventListener("click", toggle);</p>
+                <button>Saludar</button>
+         </div>
+  <!--.removeEventListener()-->
+
+  <div class="divsilvia2">
+    <h2>.removeEventListener()</h2>
+    <p>Veamos el ejemplo anterior, eliminando la funcionalidad action mediante .removeEventListener(),<br>
+        es decir, sólo debería actuar la funcionalidad toggle:<br>
+        const action = () => alert("Hello!");<br>
+        const toggle = () => button.classList.toggle("red");<br>
         
-        <div id="scroll" style="width: 300px; height: 100px; overflow-y: scroll; border: 1px solid black;">
-            <p>Esto es un texto de prueba,</p>
-            <p>vamos a trabajar con un texto largo para comprobar como funciona la accion del scroll
-                vamos a trabajar con un texto largo para comprobar como funciona la accion del scroll
-                vamos a trabajar con un texto largo para comprobar como funciona la accion del scroll
-                vamos a trabajar con un texto largo para comprobar como funciona la accion del scroll
-                vamos a trabajar con un texto largo para comprobar como funciona la accion del scroll
-                <var></var>
-            </p>
-        </div>
+        button.addEventListener("click", action);<br>       
+        button.addEventListener("click", toggle);<br>        
+        button.removeEventListener("click", action);</p>
 
-        <button id="botonRemovible">Haz clic</button>
+        <button>Saludar</button>
+     </div>
+
+ <!--ejemplo de la propagacion-->
+
+    <div class="divsilvia3">
+        <h2>propagacion</h2>
+        <p></p>
+     <div id="padre">
+        <div id="hijo">
+          <button id="boton">Haz clic aquí</button>
+        </div>
+      </div>
 
     <!------------------------------------------------------------------------------------------------------------->
 
@@ -161,39 +194,58 @@
         <button class="but"><a href="index.html">Volver al índice</a></button>
     </footer>
     <script>
-      // Evento de ratón
-          document.getElementById('boton').addEventListener('click', () => {
-            alert('Botón clicado');
-        });
 
-        // Evento de teclado
-           const caja = document.getElementById('miCaja');
+   //Ejemplo de .addEventListener
+    
+    const button1 = document.querySelector("button1");
+    function action() { alert("Hello!");  };
 
-            caja.addEventListener('mouseover', () => {
-                caja.style.backgroundColor = 'red';
-            });
+    button1.addEventListener("click", action);
 
-            caja.addEventListener('mouseout', () => {
-                caja.style.backgroundColor = 'green';
-            });
-            ;
+    //multiples funciones
 
-        // Evento de scroll
-        document.getElementById('scroll').addEventListener('scroll', () => {
-            console.log('Scroll detectado');
-        });
+    const button2 = document.querySelector("button2");
+    const action = () => alert("Hello!");
+    const toggle = () => button.classList.toggle("red");
 
-      //Eliminar un evento con removeEventListener
-        const boton = document.getElementById('botonRemovible');
+    button2.addEventListener("click", action);         // Hello message
+    button2.addEventListener("click", toggle);         // Add/remove red CSS
 
-        function manejarClick() {
-            alert('Evento activado. Se eliminará después de esto.');
-            boton.removeEventListener('click', manejarClick);
-        }
-         // Agrega el evento
-        boton.addEventListener('click', manejarClick);
+  //.removeEventListener()
 
+    const button3 = document.querySelector("button");
+    const action = () => alert("Hello!");
+    const mytoggle = () => button.classList.mytoggle("red");
 
+    button.addEventListener("click", action);         // Add listener
+    button.addEventListener("click", toggle);         // Toggle red CSS
+    button.removeEventListener("click", action);      // Delete listener
+
+    //Ejemplo de propagacion
+
+    const padre = document.getElementById('padre');
+    const hijo = document.getElementById('hijo');
+    const boton = document.getElementById('boton');
+
+   // Listener en la fase de captura
+    padre.addEventListener('click', () => {
+    console.log("Capturado en el DIV padre (fase de captura)");
+    }, true); // El tercer parámetro `true` activa la fase de captura
+
+   // Listener en la fase de propagacion
+    padre.addEventListener('click', () => {
+    console.log("Detectado en el DIV padre (fase de burbujeo)");
+     });
+
+   // Listener en el botón (fase objetivo)
+     boton.addEventListener('click', () => {
+     console.log("Click en el botón");
+     });
+   // Detener propagacion
+    boton.addEventListener('click', (event) => {
+    console.log("Evento en el botón");
+    event.stopPropagation(); // Detiene la propagación
+    });
 
                                 // Youssef's code
 
