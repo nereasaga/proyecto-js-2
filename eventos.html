@@ -128,7 +128,6 @@
                     <p>head over network -> message! and check all the messages that have been sent to the server</p>
 
 
-
                 <h3>event.target.node</h3>
                     <div>
                         <button id="clickBtn">Click me</button>
@@ -146,7 +145,8 @@
                     <div id="mousePosition" style="height: 500px; background-color: lightblue;">
                     <p>Click inside this box to get the mouse position!</p>
                 </div>
-
+                <h3>preventDefault()</h3>
+                    <a id="preventId" style="text-align: center; margin-top: 10px;" href="https://wwww.pentaforce.com">Visit the official website of PentaForce</a>
         </div>
 
 
@@ -375,6 +375,14 @@
             const y = event.screenY;
 
             console.log(`Mouse Position: X = ${x}, Y = ${y}`)
+        });
+
+        // preventDefault() Method Event
+
+        document.getElementById('preventId').addEventListener('click', function(event) {
+            event.preventDefault();
+            console.log('NOTE: SI NO SE TE ABRE EL ENALCE COPIALO Y PEGALO Y EN TU NAVEGDOR')
+            alert('NOTE: SI NO SE TE ABRE EL LINK, COPIALO Y PEGALO Y EN EL NAVEGDOR: pentaforce.com')
         });
 
     </script>
