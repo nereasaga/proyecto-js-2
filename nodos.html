@@ -75,7 +75,7 @@ idDivLista.appendChild(creaUl);
             </div>
         </div>
         <div class="divEjemplos">
-            <button class="but" onclick="crea()">appendChild</button>
+            <button class="but" onclick="inserta()">appendChild</button>
         <!--   AÑADE CHILD A UN PARENT ANTES DE OTROS CHILDREN  -->
             <h4>insertBefore</h4>
             <p><strong>Inserta un nodo antes de otro nodo hijo existente.</strong></p>
@@ -285,15 +285,18 @@ const listaBotones = document.querySelector(".ulBotones");
         }
 
         //INSERTAR NODO CHILD EN NODO PARENT
-        function crea() {
-            const creaUl = document.createElement("ul");
+        function inserta() {
+
+
+            const primeraLista = listas[2];
             const creaLi = document.createElement("li");
             creaLi.textContent = "Nuevo elemento de lista";
 
             const idCreaText = document.getElementById("idDivLista");
 
-            creaUl.appendChild(creaLi); //Inserta un <li> en un <ul>
-            idDivLista.appendChild(creaUl); // Inserta el <ul> en el div indicado
+            idCreaText.appendChild(creaLi); // Inserta el <li> en el ul indicado
+
+                
     }
 
     //AÑADE CHILD A UN PARENT ANTES DE OTROS CHILDREN
