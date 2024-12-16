@@ -56,19 +56,16 @@ function creaText() {
         <h4>appendChild</h4>
             <p><strong>Inserta un nodo al final de los nodos hijos de un nodo padre.</strong></p>
             <pre><code>
-function crea() {
-const creaUl = document.createElement("ul");
-const creaLi = document.createElement("li");
-creaLi.textContent = "Nuevo elemento de lista";
+function inserta() {
+    const creaLi = document.createElement("li"); 
+    creaLi.textContent = "Nuevo elemento de lista";
         
-const idCreaText = document.getElementById("idDivLista");
+    const idCreaText = document.getElementById("idUlLista");
         
-creaUl.appendChild(creaLi); 
-idDivLista.appendChild(creaUl); 
-    }
+    idUlLista.appendChild(creaLi); // Inserta el <li> en el ul indicado
             </code></pre>
-            <div id="idDivLista" class="divResultados">
-                <ul>
+            <div class="divResultados">
+                <ul id="idUlLista" >
                 <li>1</li>
                 <li>2</li>
             </ul>
@@ -286,17 +283,12 @@ const listaBotones = document.querySelector(".ulBotones");
 
         //INSERTAR NODO CHILD EN NODO PARENT
         function inserta() {
-
-
-            const primeraLista = listas[2];
-            const creaLi = document.createElement("li");
+            const creaLi = document.createElement("li"); 
             creaLi.textContent = "Nuevo elemento de lista";
 
-            const idCreaText = document.getElementById("idDivLista");
+            const idCreaText = document.getElementById("idUlLista");
 
-            idCreaText.appendChild(creaLi); // Inserta el <li> en el ul indicado
-
-                
+            idUlLista.appendChild(creaLi); // Inserta el <li> en el ul indicado
     }
 
     //AÑADE CHILD A UN PARENT ANTES DE OTROS CHILDREN
