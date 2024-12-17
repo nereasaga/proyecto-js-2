@@ -308,13 +308,11 @@
         });
 
         // beforeunload
-        /*
+
         window.addEventListener('beforeunload', ()=>{
         event.preventDefault();
         event.returnValue = "";
-        })
-        */
-
+        });
 
         // canplay
         document.getElementById('videoCanplay').addEventListener('canplay', function(event) {
@@ -349,12 +347,12 @@
         });
 
         // error
-        /*
+     
         document.getElementById('image').addEventListener('error', function(event) {
             console.log('There was an error detected in the website');
             alert('There was an error detected in the website');
         });
-        */
+
 
         // fullscreenchange
         document.getElementById('enterFullscreen1').addEventListener('click', function() {
