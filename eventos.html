@@ -21,6 +21,10 @@
         width: 100%;
     }
 
+    .divYoussef video {
+        border-radius: 15px;
+    }
+
    </style>
 <body>
     <nav class="navPaginas">
@@ -102,22 +106,20 @@
                     <img id="myImage" src="assets/imagetest.jpg" alt="image" width="100%" style="border-radius: 10px;">
                     <button id="cancelLoading">Cancel Image Loading</button>
                     
-                <h3>before print / afterprint</h3>
+                <h3>beforeprint / afterprint</h3>
                     <button onclick="window.print()">Print this document</button>
 
                 <h3>beforeunload</h3>
 
                 <h3>canplay</h3>
-                    <video id="videoCanplay" controls style="border-radius: 15px;">
+                    <video id="videoCanplay" controls>
                         <source src="assets/videotest.mp4" type="video/mp4">
                     </video>
-                    <p id="canplay"></p>
 
                 <h3>canplaythrough</h3>
-                    <video id="videoThrough" controls style="border-radius: 15px;">
+                    <video id="videoThrough" controls>
                         <source src="assets/videotest.mp4" type="video/mp4">
                     </video>
-                    <p id="canplaythrough"></p>
 
                 <h3>change</h3>
                     <input type="text" id="nameField2" placeholder="Type your name">
@@ -126,7 +128,7 @@
                     <input type="text" id="nameField3" placeholder="Type your name">
 
                 <h3>ended</h3>
-                    <video id="videoEnded" controls sstyle="border-radius: 15px;">
+                    <video id="videoEnded" controls>
                         <source src="assets/videotest.mp4">
                     </video>
 
@@ -137,7 +139,7 @@
                     <button id="enterFullscreen1">Enter Fullscreen</button>
 
                 <h3>pause</h3>
-                    <video id="videoPause" controls style="border-radius: 15px;">
+                    <video id="videoPause" controls>
                         <source src="assets/videotest.mp4">
                     </video>
                     <button id="pauseButton">Pause Video</button>
@@ -146,21 +148,20 @@
                 <form>
                     <input type="email" id="nameField4" requiered style="margin-bottom: 10px; width: 100%;">
                     <br>
-                    <button type="Submit" style="width: 100%;" >Send</button>
+                    <button type="Submit" style="width: 100%;">Send</button>
                 </form>
                 <h3>load</h3>
-                    <video id="videoLoad" controls style="border-radius: 15px;">
+                    <video id="videoLoad" controls>
                         <source src="assets/videotest.mp4">
                     </video>
 
                 <h3>loadeddata</h3>
-                    <video id="videoLoadedData" controls style="border-radius: 15px;">
+                    <video id="videoLoadedData" controls>
                         <source src="assets/videotest.mp4">
                     </video>
-                    <p id="loadeddata"></p>
 
                 <h3>loadedmetadata</h3>
-                <video id="videoLoadedMeta" controls style="border-radius: 15px;">
+                <video id="videoLoadedMeta" controls>
                     <source src="assets/videotest.mp4" type="video/mp4">
                 </video>
 
