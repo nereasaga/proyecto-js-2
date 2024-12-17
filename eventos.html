@@ -9,6 +9,18 @@
    <style>
      .red { background: red }
 
+    .divYoussef button {
+        border-style: none; 
+        border-radius: 100px; 
+        border: 2px solid rgb(0, 0, 0);
+        padding: 10px 0 10px 0; 
+        background-color: rgb(228, 0, 0); 
+        cursor: pointer; 
+        color: white; 
+        font-weight: bold;
+        width: 100%;
+    }
+
    </style>
 <body>
     <nav class="navPaginas">
@@ -87,7 +99,7 @@
                     <input type="text" id="nameField1" placeholder="Type something...">
 
                     <h3>Abort</h3>
-                    <img id="myImage" src="assets/imagetest.jpg" alt="image" width="300">
+                    <img id="myImage" src="assets/imagetest.jpg" alt="image" width="100%" style="border-radius: 10px;">
                     <button id="cancelLoading">Cancel Image Loading</button>
                     
                 <h3>before print / afterprint</h3>
@@ -96,13 +108,13 @@
                 <h3>beforeunload</h3>
 
                 <h3>canplay</h3>
-                    <video id="videoCanplay" controls>
+                    <video id="videoCanplay" controls style="border-radius: 15px;">
                         <source src="assets/videotest.mp4" type="video/mp4">
                     </video>
                     <p id="canplay"></p>
 
                 <h3>canplaythrough</h3>
-                    <video id="videoThrough" controls>
+                    <video id="videoThrough" controls style="border-radius: 15px;">
                         <source src="assets/videotest.mp4" type="video/mp4">
                     </video>
                     <p id="canplaythrough"></p>
@@ -114,7 +126,7 @@
                     <input type="text" id="nameField3" placeholder="Type your name">
 
                 <h3>ended</h3>
-                    <video id="videoEnded" controls>
+                    <video id="videoEnded" controls sstyle="border-radius: 15px;">
                         <source src="assets/videotest.mp4">
                     </video>
 
@@ -125,29 +137,30 @@
                     <button id="enterFullscreen1">Enter Fullscreen</button>
 
                 <h3>pause</h3>
-                    <video id="videoPause" controls>
+                    <video id="videoPause" controls style="border-radius: 15px;">
                         <source src="assets/videotest.mp4">
                     </video>
                     <button id="pauseButton">Pause Video</button>
 
                 <h3>invalid</h3>
                 <form>
-                    <input type="email" id="nameField4" requiered>
-                    <button type="Submit">Send</button>
+                    <input type="email" id="nameField4" requiered style="margin-bottom: 10px; width: 100%;">
+                    <br>
+                    <button type="Submit" style="width: 100%;" >Send</button>
                 </form>
                 <h3>load</h3>
-                    <video id="videoLoad" controls>
+                    <video id="videoLoad" controls style="border-radius: 15px;">
                         <source src="assets/videotest.mp4">
                     </video>
 
                 <h3>loadeddata</h3>
-                    <video id="videoLoadedData" controls>
+                    <video id="videoLoadedData" controls style="border-radius: 15px;">
                         <source src="assets/videotest.mp4">
                     </video>
                     <p id="loadeddata"></p>
 
                 <h3>loadedmetadata</h3>
-                <video id="videoLoadedMeta" controls>
+                <video id="videoLoadedMeta" controls style="border-radius: 15px;">
                     <source src="assets/videotest.mp4" type="video/mp4">
                 </video>
 
@@ -174,12 +187,14 @@
                 <h3>ASCII Code</h3>
                     <input type="text" id="asciiInput" placeholder="Press a key">
 
-                <h3>screenX - screen</h3>
+                <h3>screenX - screenY</h3>
                     <div id="mousePosition" style="height: 500px; background-color: lightblue;">
                     <p>Click inside this box to get the mouse position!</p>
                 </div>
                 <h3>preventDefault()</h3>
+                    <h4>Disable Right-Click</h4>
                     <a id="preventId" style="text-align: center; margin-top: 10px;" href="https://wwww.pentaforce.com">Visit the official website of PentaForce</a>
+                    <input type="checkbox" id="myCheckbox">
         </div>
 
 
@@ -292,11 +307,12 @@
         });
 
         // beforeunload
-
+        /*
         window.addEventListener('beforeunload', ()=>{
         event.preventDefault();
         event.returnValue = "";
         })
+        */
 
 
         // canplay
@@ -332,10 +348,12 @@
         });
 
         // error
+        /*
         document.getElementById('image').addEventListener('error', function(event) {
             console.log('There was an error detected in the website');
             alert('There was an error detected in the website');
         });
+        */
 
         // fullscreenchange
         document.getElementById('enterFullscreen1').addEventListener('click', function() {
@@ -389,7 +407,7 @@
 
         // online
         window.addEventListener('online', function(event) {
-            const online = 'You have come back online'
+            const online = 'You have recovered access to internet, welcome back again'
             console.log(online);
             alert(online);
         });
@@ -433,8 +451,20 @@
 
         document.getElementById('preventId').addEventListener('click', function(event) {
             event.preventDefault();
-            console.log('NOTE: SI NO SE TE ABRE EL ENALCE COPIALO Y PEGALO Y EN TU NAVEGDOR')
-            alert('NOTE: SI NO SE TE ABRE EL LINK, COPIALO Y PEGALO Y EN EL NAVEGDOR: pentaforce.com')
+            console.log('Link click prevented')
+            alert('Link is prevented')
+        });
+
+        // preventDefault() checkbox example
+        document.getElementById('myCheckbox').addEventListener('click', function(event) {
+            event.preventDefault();
+        });
+
+        // preventDefault() right click example
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+            console.log('Right-click is disabled on this page.')
+            alert("Right-click is disabled on this page.")
         });
 
     </script>
