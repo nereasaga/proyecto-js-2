@@ -56,106 +56,106 @@
     </nav>
  <main>
 
-    <!--Ejemplo de .addEventListener() -->
-            <div class="divsilvia">
-            <h2>.addEventListener()</h2>
-            <pre><code>
-               <p>const button1 = document.querySelector("button1");<br>
-                function action() {alert("Hola mundo!"); };<br>
-                button.addEventListener("click", action);</p><br>
-            </code></pre>
-               <p> Buscamos el elemento que tendrá el evento, en este caso button<br>
-                   Creamos una función action() que realizará la acción deseada.<br>
-                    En el botón, escuchamos el evento click y le asociamos la función action.</p>
-                    <button id="button1" class="butJS">Haz clic</button>
-            </div>
+   <!--Ejemplo de .addEventListener() -->
 
-    <!--multiples funciones-->
-            <div class="divsilvia2">
-            <h2>Multiples funcionalidades</h2>
-          
-            <p>permite asociar múltiples funciones a un mismo evento<br>
-                <pre><code>
-                const button2 = document.querySelector("button2");<br>
-                const action = () => alert("Hola mundo!");<br>
-                const toggle = () => button.classList.toggle("red");<br>
-                
-                button.addEventListener("click", action);<br> 
-                button.addEventListener("click", toggle); </code></pre></p>
-           
-                <button id="button2" class="butJS">Saludar</button>
-         </div>
-    <!--.removeEventListener()-->
-        <div class="divsilvia3">
-            <h2>.removeEventListener()</h2>
-                    <p>Veamos el ejemplo anterior, eliminando la funcionalidad action mediante .removeEventListener(),<br>
-                    es decir, sólo debería actuar la funcionalidad toggle:<br>
-                    <pre><code>
-                        const button3 = document.getElementById("button3");<br>
-
-                        const action2 = () => alert("¡Esta funcionalidad será eliminada!");
-                        const toggleAnotherClass = () => button3.classList.toggle("blue");<br>
-                
-                        button3.addEventListener("click", action2);
-                        button3.addEventListener("click", toggleAnotherClass);<br>
-                
-                        // Eliminar la funcionalidad `action2` después de 3 segundos
-                        
-                        setTimeout(() => {
-                            button3.removeEventListener("click", action2);<br>
-                            alert("Función 'action2' eliminada");
-                        }, 3000);</code></pre></p>
-
-                <button id="activar" class="butJS">activar</button>
-                <button id="detener" class="butJS">detener</button>
+   <div class="divsilvia">
+    <h2>.addEventListener()</h2>
+      <pre><code>
+        <p>const button = document.querySelector("button");<br>
+          function action(){
+          alert("Hola mundo!"); };<br>
+          button.addEventListener("click", action);</p><br>
+      </code></pre>
+       <p> 1️⃣ Buscamos el elemento que tendrá el evento, en este caso button<br>
+            2️⃣ Creamos una función action() que realizará la acción deseada.<br>
+            3️⃣ En el botón, escuchamos el evento click y le asociamos la función action.</p>
+       <button id="button" class="butJS">Haz clic</button>
     </div>
 
-   <!--ejemplo de la propagacion-->
-
-      <div class="divsilvia4">
-        <h2>Fases: captura, objetivo, propagacion</h2>
-            <p>En la fase de captura, el evento baja desde el nodo más alto
-                (document) hasta el elemento que disparó el evento (fase objetivo) 
-                y en la fase de propagacion vuelve a subir burbujeando hacia el dom.</p>
+<!--multiples funciones-->
+    <div class="divsilvia2">
+    <h2>Multiples funcionalidades</h2>
+  
+    <p>permite asociar múltiples funciones a un mismo evento<br>
         <pre><code>
-            const padre = document.getElementById('padre');
-            const hijo = document.getElementById('hijo');
-            const boton = document.getElementById('boton');
+        const mybutton = document.querySelector("mybutton");<br>
+        const action = () => alert("Hola mundo!");<br>
+        const toggle = () => mybutton.classList.toggle("red");<br>
+        
+        button.addEventListener("click", action);<br> 
+        button.addEventListener("click", toggle); </code></pre></p>
+   
+        <button id="mybutton" class="butJS">Saludar</button>
+ </div>
+<!--.removeEventListener()-->
+<div class="divsilvia3">
+    <h2>.removeEventListener()</h2>
+            <p>ahora vamos a ver un ejemplo con .removeEventListener(),<br>
+               este elimina el evento, Importante: La función manejadora debe estar nombrada para poder eliminarla.<br>
+            <pre><code>
+                const botonActivar = document.getElementById("activar");
+                const botonDetener = document.getElementById("detener");
+                
+                function accion() {
+                  alert("¡Botón activado!");
+                  }
+                botonActivar.addEventListener("click", accion);    // Agregar el evento
+            
+                  botonDetener.addEventListener("click", () => {
+                  botonActivar.removeEventListener("click", accion);    // Eliminar el evento
+                  alert("El evento ha sido eliminado.");
+                });
+            </code></pre></p>
 
-            // Fase de captura (true como tercer parámetro)
-            padre.addEventListener('click', () => {
-                console.log("Fase de captura: DIV PADRE");
-            }, true);
+            <button id="activar" class="butJS">activar</button>
+            <button id="detener" class="butJS">detener</button>
+</div>
 
-            hijo.addEventListener('click', () => {
-                console.log("Fase de captura: DIV HIJO");
-            }, true);
+<!--ejemplo de la propagacion-->
 
-            boton.addEventListener('click', () => {
-                console.log("Fase de captura: BOTÓN");
-            }, true);
+  <div class="divsilvia4">
+    <h2>Fases: captura, objetivo, propagacion</h2>
+        <p>En la fase de captura, el evento baja desde el nodo más alto
+            (document) hasta el elemento que disparó el evento (fase objetivo) 
+            y en la fase de propagacion vuelve a subir burbujeando hacia el dom.</p>
+    <pre><code>
+        const padre = document.getElementById('padre');
+        const hijo = document.getElementById('hijo');
+        const boton = document.getElementById('boton');
 
-            // Fase objetivo (se ejecuta cuando se llega al elemento del evento)
-            boton.addEventListener('click', () => {
-                console.log("Fase objetivo: BOTÓN");
-            });
+        // Fase de captura (true como tercer parámetro)
+        padre.addEventListener('click', () => {
+            console.log("Fase de captura: DIV PADRE");
+        }, true);
 
-            // Fase de burbujeo (por defecto, el tercer parámetro es false)
-            hijo.addEventListener('click', () => {
-                console.log("Fase de burbujeo: DIV HIJO");
-            });
+        hijo.addEventListener('click', () => {
+            console.log("Fase de captura: DIV HIJO");
+        }, true);
 
-            padre.addEventListener('click', () => {
-                console.log("Fase de burbujeo: DIV PADRE");
-            });
-        </code></pre>
+        boton.addEventListener('click', () => {
+            console.log("Fase de captura: BOTÓN");
+        }, true);
 
-         <div id="padre">DIV PADRE
-              <div id="hijo"> DIV HIJO
-                        <button id="boton">Haz clic aquí</button>
-                    </div>
+        // Fase objetivo (se ejecuta cuando se llega al elemento del evento)
+        boton.addEventListener('click', () => {
+            console.log("Fase objetivo: BOTÓN");
+        });
+
+        // Fase de burbujeo (por defecto, el tercer parámetro es false)
+        hijo.addEventListener('click', () => {
+            console.log("Fase de burbujeo: DIV HIJO");
+        });
+
+        padre.addEventListener('click', () => {
+            console.log("Fase de burbujeo: DIV PADRE");
+        });
+    </code></pre>
+
+     <div id="padre">DIV PADRE
+          <div id="hijo"> DIV HIJO
+                    <button id="boton">Haz clic aquí</button>
                 </div>
-
+            </div>
     <!------------------------------------------------------------------------------------------------------------->
 
         <div class="divYoussef">
@@ -271,9 +271,9 @@
         </footer>
         <script>
     
-        //Ejemplo de .addEventListener
+          //Ejemplo de .addEventListener
         
-        const button = document.getElementById("button");
+          const button = document.getElementById("button");
         
         function action() {
         alert("¡Hola mundo!");
@@ -284,8 +284,8 @@
 
         const mybutton = document.getElementById("mybutton");
 
-    const action1 = () => alert("¡Hola!");
-    const toggleClass = () => button2.classList.toggle("red");
+        const action1 = () => alert("¡Hola mundo!");
+        const toggleClass = () => mybutton.classList.toggle("red");
 
         mybutton.addEventListener("click", action1);
         mybutton.addEventListener("click", toggleClass);
