@@ -10,11 +10,8 @@
     .red {
         background-color: red;
         color: bisque ;}
-        .blue{ 
-            background-color: blue;
-            color: bisque;
-        }
-     .red { background: red }
+       
+
 
     .divYoussef button {
         border-style: none; 
@@ -49,15 +46,15 @@
     <!--Ejemplo de .addEventListener() -->
             <div class="divsilvia">
             <h2>.addEventListener()</h2>
-            <pre><code>
-               <p>const button1 = document.querySelector("button1");<br>
-                function action() {alert("Hola mundo!"); };<br>
-                button.addEventListener("click", action);</p><br>
-            </code></pre>
-               <p> 1️⃣ Buscamos el elemento que tendrá el evento, en este caso button<br>
-                    2️⃣ Creamos una función action() que realizará la acción deseada.<br>
-                    3️⃣ En el botón, escuchamos el evento click y le asociamos la función action.</p>
-                    <button id="button1" class="butJS">Haz clic</button>
+              <pre><code>
+                <p>const button1 = document.querySelector("button1");<br>
+                  function action() {alert("Hola mundo!"); };<br>
+                  button.addEventListener("click", action);</p><br>
+              </code></pre>
+               <p>   Buscamos el elemento que tendrá el evento, en este caso button<br>
+                     Creamos una función action() que realizará la acción deseada.<br>
+                     En el botón, escuchamos el evento click y le asociamos la función action.</p>
+               <button id="button1" class="butJS">Haz clic</button>
             </div>
 
     <!--multiples funciones-->
@@ -84,7 +81,7 @@
                         const button3 = document.getElementById("button3");<br>
 
                         const action2 = () => alert("¡Esta funcionalidad será eliminada!");
-                        const toggleAnotherClass = () => button3.classList.toggle("blue");<br>
+                        const toggleAnotherClass = () => button3.classList.toggle("red");<br>
                 
                         button3.addEventListener("click", action2);
                         button3.addEventListener("click", toggleAnotherClass);<br>
@@ -258,7 +255,7 @@
 
         const button2 = document.getElementById("button2");
 
-    const action1 = () => alert("¡Hola!");
+    const action1 = () => alert("¡Hola mundo!");
     const toggleClass = () => button2.classList.toggle("red");
 
     button2.addEventListener("click", action1);
