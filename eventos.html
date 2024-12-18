@@ -345,12 +345,13 @@
                                 // Youssef's code
 
         // event.target.id
-        document.querySelectorAll('button').forEach(button => {
+        document.querySelectorAll('#submitBtn, #cancelBtn').forEach(button => {
             button.addEventListener('click', function(event) {
                 console.log('The id of the button clicked is:', event.target.id);
                 alert('The id of the button clicked is: '+ event.target.id);
             });
         });
+        
 
         // event.type
         const nameField = document.getElementById('nameField1');
